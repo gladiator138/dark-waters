@@ -1,0 +1,12 @@
+Feature,Importance,Std
+Length_m,0.10359,0.00076
+Dist_Chokepoint_km,0.10295,0.00122
+Dist_Conflict_km,0.0716,0.00075
+Hour_UTC,0.06465,0.00058
+Dist_Port_km,0.03002,0.0006
+Dist_Shore_km,0.0156,0.00031
+Presence_Score,0.01292,0.00018
+Strike_Events_250km,0.00562,0.00038
+Conflict_Events_500km,0.00538,0.00014
+Conflict_Events_250km,0.00194,7e-05
+Strike_Events_500km,0.00084,0.00011

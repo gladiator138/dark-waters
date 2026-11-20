@@ -1,0 +1,6 @@
+Phase,Start,End,Days,Mean_total,Mean_tanker,Mean_cargo,Pct_of_baseline,Tanker_share
+Baseline (pre-war),2025-03-30,2026-02-27,335,85.09,47.73,37.36,100.0,0.56
+Closure: war phase,2026-02-28,2026-04-07,39,4.87,1.97,2.9,5.7,0.4
+Ceasefire & US blockade of Iran,2026-04-08,2026-05-29,52,5.63,2.37,3.27,6.6,0.42
+MoU / managed passage,2026-05-30,2026-07-05,37,13.97,6.38,7.59,16.4,0.46
+Renewed attacks & negotiations,2026-07-06,2026-09-20,77,5.45,1.96,3.49,6.4,0.36

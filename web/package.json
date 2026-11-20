@@ -1,0 +1,15 @@
+{
+  "name": "dark-waters-web",
+  "version": "1.0.0",
+  "description": "Dark Waters Ops site (ECharts, built into one HTML file by scripts/build_site.py)",
+  "scripts": {
+    "build": "cd .. && python scripts/build_site.py"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "echarts": "^5.6.0"
+  },
+  "private": true
+}

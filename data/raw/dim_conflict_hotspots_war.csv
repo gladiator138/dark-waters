@@ -1,0 +1,223 @@
+Country,Province,Latitude,Longitude,Events,Fatalities,Strikes
+Lebanon,Al Nabatieh,33.2832,35.4971,5257,1345,4659
+Palestine,West Bank,31.9475,35.267,3266,59,30
+Lebanon,South,33.3416,35.3035,2702,1095,2483
+Iran,Tehran,35.5022,51.3269,1758,468,946
+Palestine,Gaza Strip,31.407,34.3577,1372,608,949
+Israel,HaZafon,32.839,35.3807,1145,7,821
+Iran,Hormozgan,27.1422,55.0325,459,229,270
+Syria,Quneitra,33.0113,35.7989,453,3,80
+Iran,Isfahan,32.6094,52.0477,425,92,245
+Syria,Al Hasakeh,36.4131,40.5519,419,56,8
+Iran,Khuzestan,31.4636,48.9916,390,52,202
+Syria,Dara,32.831,36.1112,374,30,42
+Syria,Aleppo,36.1445,37.3978,317,78,3
+Iraq,Erbil,36.3791,44.2104,306,21,181
+Iran,Alborz,35.9457,50.906,306,76,192
+Iran,Mazandaran,36.3633,52.3677,298,4,72
+Iran,Fars,29.3576,53.3176,292,68,163
+Syria,Deir ez Zor,35.2318,40.2761,286,65,4
+Bahrain,Capital,26.1927,50.5508,280,1,29
+Turkey,Istanbul,41.2707,28.4707,249,1,0
+Iraq,Al Anbar,33.1774,41.3987,246,95,51
+Israel,Tel Aviv,32.0984,34.8103,235,5,110
+Syria,Ar Raqqa,36.0265,38.922,235,39,0
+Iran,Sistan and Baluchestan,28.2728,60.8613,234,105,83
+Yemen,Taizz,13.2949,43.7855,231,69,20
+Iraq,Baghdad,33.278,44.3783,227,20,64
+Syria,As Sweida,32.7624,36.8919,226,47,31
+Iran,Lorestan,33.5164,48.3219,224,44,64
+Iran,Razavi Khorasan,35.7792,59.0295,223,0,27
+Turkey,Izmir,38.5994,27.042,221,0,0
+Iran,Kermanshah,34.4871,46.8086,215,76,101
+Iran,East Azerbaijan,38.0858,46.6924,210,87,90
+Yemen,Hajjah,16.0944,43.2039,206,14,6
+Iran,Bushehr,28.7846,51.5038,202,11,131
+Iraq,Al Basrah,30.2047,47.5084,200,14,28
+Yemen,Marib,15.3329,45.4523,192,56,12
+Israel,HaMerkaz,32.085,34.9167,191,6,97
+Israel,Haifa,32.6278,34.9819,184,4,83
+Iran,West Azerbaijan,37.8742,44.7003,180,78,63
+Bahrain,Northern,26.1468,50.4809,176,0,3
+Lebanon,Mount Lebanon,33.8513,35.6478,171,113,141
+Turkey,Ankara,39.7073,32.5011,170,0,0
+Yemen,Ad Dali,13.8943,44.7825,168,115,16
+Lebanon,Bekaa,33.6407,35.8097,161,73,139
+Israel,HaDarom,30.6783,34.8831,157,0,47
+Iran,Markazi,34.4772,49.5818,155,23,56
+Iran,Gilan,37.5092,49.0189,152,8,40
+Yemen,Aden,12.8058,44.788,152,23,0
+Syria,Rural Damascus,33.4538,37.4305,149,35,6
+United Arab Emirates,Abu Dhabi,23.7727,53.7133,146,8,59
+Syria,Homs,34.4708,38.2063,146,71,1
+Yemen,Al Mahwit,15.3084,43.4994,143,0,0
+Israel,Jerusalem,31.7281,34.9945,140,9,27
+Yemen,Lahij,13.3204,44.7623,136,45,8
+Iran,Kurdistan,35.6014,47.0057,131,82,71
+Iran,Kerman,29.2326,57.3392,130,16,37
+Iran,Hamadan,34.8698,48.559,129,7,40
+Iraq,Al Sulaymaniyah,35.5263,45.379,129,5,53
+Lebanon,Baalbek-Hermel,34.1673,36.2993,126,222,104
+Kuwait,Al Asimah,29.3474,47.9688,123,4,44
+Indian Ocean,North Indian Ocean,13.7278,70.4734,121,7,63
+Yemen,Al Jawf,16.5962,45.5989,119,21,1
+Syria,Damascus,33.5153,36.2738,118,18,1
+Yemen,Al Hudaydah,14.7791,43.2181,118,41,8
+Iran,Ilam,33.0433,46.8724,117,49,44
+Iran,Semnan,35.7868,54.9676,115,10,17
+Syria,Hama,35.3165,37.3411,114,54,2
+Iran,Qazvin,36.1089,50.0386,113,10,36
+Yemen,Hadramawt,16.5288,48.6269,113,13,1
+Yemen,Amanat al Asimah,15.4201,44.1919,110,7,1
+Iran,Qom,34.6674,51.002,108,45,34
+Iran,Kohgiluyeh and Boyer-Ahmad,30.7032,51.0949,107,13,9
+Yemen,Ibb,14.0881,44.175,105,12,0
+Iraq,Ninewa,35.9879,42.3496,102,22,46
+Yemen,Shabwah,14.651,46.62,99,48,11
+Saudi Arabia,Ar Riyadh,23.4556,45.232,96,5,17
+Iran,Yazd,31.4825,54.4162,93,1,42
+Iran,Golestan,37.2982,54.8804,92,1,0
+Iran,Chaharmahal and Bakhtiari,31.979,50.8101,91,0,12
+Iraq,Kirkuk,35.2858,44.0603,91,31,31
+Iraq,Al Muthanna,30.4107,45.3606,88,2,7
+Syria,Idleb,35.8547,36.5648,86,37,2
+Iran,Ardabil,38.4066,47.9857,86,5,13
+Yemen,Al Bayda,14.326,45.216,85,18,3
+Iran,North Khorasan,37.4249,57.178,84,0,1
+Yemen,Sanaa,15.3931,44.4753,79,14,0
+Iraq,Maysan,31.999,47.135,78,23,6
+Mediterranean Sea,Wider Black Sea Region,43.4965,34.2569,77,1,8
+Yemen,Abyan,13.6274,46.228,72,16,1
+Iran,South Khorasan,32.8019,58.24,67,0,8
+Turkey,Bursa,40.1017,28.9389,67,0,0
+Iran,Zanjan,36.4014,48.422,66,25,16
+Yemen,Sadah,17.0883,44.0424,64,23,4
+Qatar,Ad Dawnah,25.2934,51.5014,62,1,12
+Kuwait,Al Jahra,29.4988,47.3671,62,3,19
+Turkey,Adana,37.4745,35.3726,59,0,0
+Syria,Lattakia,35.5854,35.9916,59,11,1
+Turkey,Diyarbakir,38.1105,40.2245,59,0,0
+Iraq,Salah Al Din,34.6687,43.6316,58,4,25
+Turkey,Mersin,36.7331,33.7591,53,0,0
+Yemen,Amran,16.1156,43.9414,52,40,1
+United Arab Emirates,Dubai,24.9904,55.3711,52,3,23
+Yemen,Raymah,14.657,43.6874,51,0,0
+Iraq,Babil,32.5765,44.6371,50,16,14
+Jordan,Amman,31.6696,36.3151,50,0,11
+Turkey,Kocaeli,40.8691,29.8208,49,0,0
+Saudi Arabia,Eastern,23.1567,50.3153,48,0,9
+Turkey,Mugla,36.946,28.646,47,0,0
+Kuwait,Al Ahmadi,28.8688,47.9227,46,6,14
+Iraq,Diyala,34.0711,44.8903,45,9,10
+Turkey,Hakkari,37.3909,43.9965,44,0,0
+Lebanon,Beirut,33.8886,35.5016,42,45,13
+Bahrain,Southern,25.9954,50.5421,40,1,8
+Jordan,Az Zarqa,31.8608,36.8739,40,0,6
+Yemen,Dhamar,14.5395,44.3063,39,6,0
+Turkey,Sanliurfa,37.3442,38.9233,39,0,0
+Turkey,Samsun,41.2783,35.8756,39,0,0
+Turkey,Hatay,36.4111,36.2273,38,0,0
+Turkey,Balikesir,39.8038,27.9824,36,0,0
+Bahrain,Muharraq,26.2547,50.6428,36,1,10
+Turkey,Eskisehir,39.6143,31.0627,36,0,0
+Turkey,Aydin,37.7322,28.0578,35,0,0
+Turkey,Batman,38.0226,41.3125,35,0,0
+Turkey,Mardin,37.3257,40.7757,32,0,1
+Iraq,Duhok,37.0446,43.1386,29,0,4
+Turkey,Van,38.5455,43.5949,29,0,0
+Iraq,Thi Qar,31.2876,46.2732,28,2,5
+Iraq,Kerbala,32.49,43.8069,28,3,1
+Mediterranean Sea,Eastern Mediterranean Sea,34.924,28.7224,26,176,0
+Turkey,Antalya,36.7628,31.9301,25,0,0
+Lebanon,North,34.3195,35.9369,24,7,4
+Iraq,Al Qadissiya,31.8451,45.1666,24,2,2
+Turkey,Gaziantep,37.1146,37.2439,23,0,0
+Iraq,Wassit,32.7059,45.704,22,5,1
+Turkey,Mus,39.009,41.9466,22,0,0
+Syria,Tartous,34.9536,36.075,22,2,0
+Turkey,Tunceli,39.1892,39.347,21,0,0
+Iraq,Al Najaf,31.0697,43.38,20,2,0
+Turkey,Malatya,38.5104,37.8439,20,0,0
+Yemen,Al Mahrah,17.0575,51.8238,19,1,0
+Turkey,Denizli,37.6788,29.2458,19,0,0
+Turkey,Kayseri,38.5057,35.9186,19,0,0
+Turkey,Sirnak,37.4379,42.5882,19,0,0
+Turkey,Artvin,41.0385,41.8484,18,0,0
+Jordan,Al Mafraq,32.5408,38.1525,15,0,2
+Turkey,Agri,39.466,43.4673,15,0,0
+Turkey,Manisa,38.7462,28.0939,14,0,0
+Qatar,Ar Rayyan,24.931,50.9784,14,0,2
+Turkey,Canakkale,39.9635,26.8428,14,0,0
+Turkey,Sivas,39.5473,37.2125,14,0,0
+Turkey,Edirne,41.2961,26.6957,13,0,0
+United Arab Emirates,Al Fujayrah,25.4363,56.2301,13,2,11
+Jordan,Irbid,32.4735,35.8353,12,0,3
+Oman,Musandam,25.9953,56.303,12,6,10
+Turkey,Ordu,40.738,37.411,11,0,0
+Lebanon,Akkar,34.5499,36.1901,11,1,1
+Turkey,Rize,40.9104,40.817,11,0,0
+Turkey,Bitlis,38.4969,42.2274,11,0,0
+Turkey,Elazig,38.7101,39.3439,10,0,0
+Turkey,Trabzon,40.8094,39.7814,10,0,0
+Turkey,Bingol,39.0247,40.718,10,0,0
+Turkey,Tokat,40.4006,36.6865,10,0,0
+Turkey,Giresun,40.5664,38.4409,9,0,0
+Turkey,Corum,40.646,34.7294,8,0,0
+Turkey,Tekirdag,41.0734,27.3901,8,0,0
+Turkey,Zonguldak,41.2978,31.8293,8,0,0
+Kuwait,Al Farwaniyah,29.2476,47.9119,8,1,8
+Turkey,Siirt,37.9278,42.0911,7,0,0
+Turkey,Erzurum,40.0725,41.4751,7,0,0
+Qatar,Al Khor,25.7618,51.3405,7,7,4
+United Arab Emirates,Ash Shariqah,25.1368,55.8094,6,0,5
+Turkey,Osmaniye,37.3416,36.2986,6,0,0
+Jordan,Al Aqabah,29.9747,35.2057,6,0,2
+Turkey,Adiyaman,37.815,38.2092,6,0,0
+Yemen,Suqutra,12.5081,53.893,6,0,0
+Turkey,Kastamonu,41.4214,33.7891,5,0,0
+Turkey,Kahramanmaras,37.8852,36.8854,5,0,0
+Turkey,Konya,38.0284,32.412,5,0,0
+Turkey,Igdir,39.8813,43.9762,5,0,0
+Turkey,Bolu,40.5731,31.59,5,0,0
+Saudi Arabia,Al Jawf,30.1511,39.7423,4,0,0
+Turkey,Bilecik,40.1112,30.1285,4,0,0
+Kuwait,Hawalli,29.3117,48.0552,4,0,2
+Oman,Dhofar,18.8597,54.5566,4,0,2
+Turkey,Kutahya,39.3321,29.606,4,0,0
+Turkey,Kirklareli,41.6597,27.5054,4,0,0
+Turkey,Kars,40.5157,43.0403,3,0,0
+Turkey,Kirsehir,39.3091,34.0422,3,0,0
+Oman,Muscat,23.2501,58.7601,3,0,2
+Oman,Al Wusta,20.4761,56.9042,3,0,3
+Turkey,Usak,38.5491,29.3243,3,0,0
+United Arab Emirates,Ras Al Khaymah,25.698,55.9686,3,0,2
+Turkey,Amasya,40.6554,35.8544,3,0,0
+Qatar,Ash Sheehaniya,25.4451,51.0111,3,0,1
+Saudi Arabia,Al Madinah,25.0041,39.9162,3,0,1
+Turkey,Afyonkarahisar,38.5248,30.6111,3,0,0
+Turkey,Sinop,41.6486,34.992,3,0,0
+Turkey,Karabuk,41.2036,32.5224,3,0,0
+Turkey,Nevsehir,38.8286,34.6035,2,0,0
+Oman,Al Batinah North,24.2357,56.5739,2,2,2
+Jordan,Al Karak,31.1106,35.8385,2,0,1
+Jordan,Maan,30.2431,36.501,2,0,0
+Jordan,Jerash,32.2431,35.9005,2,0,1
+Jordan,Al Balqa,31.9393,35.6476,2,0,1
+Turkey,Burdur,37.326,30.2481,2,0,0
+Qatar,Al Wakrah,24.8527,51.2992,2,0,1
+Turkey,Karaman,37.0098,33.1805,2,0,0
+Turkey,Cankiri,40.6726,33.4398,2,0,0
+Turkey,Sakarya,40.7353,30.5722,2,0,0
+Jordan,Madaba,31.6029,35.6669,1,0,1
+Turkey,Gumushane,40.3376,39.4286,1,0,0
+Saudi Arabia,Jizan,17.353,42.7999,1,0,1
+Saudi Arabia,Asir,19.2036,42.9532,1,0,0
+Turkey,Aksaray,38.5127,33.8656,1,0,0
+Saudi Arabia,Northern Borders,29.8425,42.6838,1,0,0
+Turkey,Erzincan,39.5452,39.043,1,0,0
+Turkey,Ardahan,41.1153,42.9326,1,0,0
+Turkey,Bartin,41.571,32.4886,1,0,0
+Turkey,Bayburt,40.2477,40.2223,1,0,0
+Turkey,Kilis,36.8316,37.0107,1,0,0
+United Arab Emirates,Umm Al Qaywayn,25.4619,55.7262,1,0,1
+Turkey,Yozgat,39.6218,35.2999,1,0,0

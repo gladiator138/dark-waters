@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dark Waters · Ops site · CDM Datathon-2026</title>
+<style>
+:root{--bg:#05101A;--bg2:#07131F;--panel:#0C1C2C;--panel2:#12283D;--line:#1E3A55;--text:#E6EDF4;--t2:#AFC0D0;--t3:#7F93A8;
+--amber:#F0B03A;--red:#E5484D;--green:#3FB950;--cyan:#4FC3F7;--teal:#2BB3A3;--mono:"JetBrains Mono",ui-monospace,Consolas,monospace}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 Inter,"Segoe UI",system-ui,sans-serif}
+a{color:var(--cyan)}
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:18px;padding:10px 22px;background:rgba(5,16,26,.94);
+ border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+.brand{font-weight:900;letter-spacing:4px;font-size:18px}.brand span{color:var(--amber)}
+.cls{font:700 11px var(--mono);letter-spacing:2px;color:var(--green);border:1px solid var(--green);padding:2px 8px;border-radius:4px}
+.nav{display:flex;gap:4px;margin-left:auto}.nav button{background:none;border:1px solid transparent;color:var(--t2);font:700 12px var(--mono);
+ letter-spacing:2px;padding:8px 14px;border-radius:6px;cursor:pointer}.nav button.on{border-color:var(--amber);color:var(--amber);background:#1A1608}
+.nav button:hover{color:var(--text)}
+.clock{font:12px var(--mono);color:var(--t3);letter-spacing:1px}
+.view{display:none;padding:18px 22px 40px}.view.on{display:block}
+.kick{font:700 12px var(--mono);letter-spacing:3px;color:var(--amber);text-transform:uppercase}
+h1{font-size:30px;margin:4px 0 14px;line-height:1.15}h2{font-size:24px;margin:4px 0 10px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.tile{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--t3);border-radius:10px;padding:12px 16px;cursor:pointer;
+ transition:transform .15s}.tile:hover{transform:translateY(-2px);border-color:var(--amber)}
+.tile .l{font:700 11px var(--mono);letter-spacing:2px;color:var(--t3);text-transform:uppercase;display:flex;justify-content:space-between}
+.tile .v{font-size:34px;font-weight:900;margin:2px 0}.tile .s{color:var(--t2);font-size:14px}
+.rag{font:800 11px var(--mono);letter-spacing:2px;padding:1px 7px;border-radius:4px}
+.R{border-left-color:var(--red)}.R .rag{background:var(--red);color:#fff}.R .v{color:var(--red)}
+.A{border-left-color:var(--amber)}.A .rag{background:var(--amber);color:#111}.A .v{color:var(--amber)}
+.G{border-left-color:var(--green)}.G .rag{background:var(--green);color:#111}.G .v{color:var(--green)}
+.grid2{display:grid;grid-template-columns:1.55fr 1fr;gap:12px;margin-top:12px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;position:relative}
+.panel h3{margin:0 0 6px;font:700 12px var(--mono);letter-spacing:2px;color:var(--t3);text-transform:uppercase}
+.chart{width:100%;height:360px}.map{height:520px}
+.orders{display:flex;flex-direction:column;gap:7px}
+.order{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:start;padding:8px 10px;border:1px solid var(--line);
+ border-radius:8px;background:var(--bg2);cursor:pointer}.order:hover{border-color:var(--amber)}
+.order .id{font:900 15px var(--mono);color:var(--amber)}.order .t{font-weight:700}.order .o{font-size:13px;color:var(--t3)}
+.order .w{font:700 11px var(--mono);color:var(--cyan);white-space:nowrap}
+.watch td,.watch th{padding:5px 6px;border-bottom:1px solid var(--line);font-size:14px;text-align:left}
+.watch th{font:700 11px var(--mono);letter-spacing:1.5px;color:var(--t3)}
+.bar{height:8px;border-radius:4px;background:var(--red)}
+.bluf{background:#1A1608;border:1px solid var(--amber);border-radius:10px;padding:12px 16px;margin:12px 0;font-size:17px}
+.bluf b{color:var(--amber);font-family:var(--mono);letter-spacing:2px;margin-right:10px}
+.chap{display:grid;grid-template-columns:1fr 1.5fr;gap:22px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line);min-height:70vh}
+.chap .n{font:900 13px var(--mono);color:var(--amber);letter-spacing:3px}
+.chap p{color:var(--t2);font-size:17px}.big{font-size:56px;font-weight:900;line-height:1}.big small{font-size:18px;color:var(--t2);font-weight:600}
+.stats{display:flex;gap:26px;flex-wrap:wrap;margin:14px 0}.stats div{min-width:150px}
+.ev{font-size:13px;color:var(--t3);border-left:2px solid var(--line);padding-left:10px;margin-top:10px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}.reveal.in{opacity:1;transform:none}
+.console{display:grid;grid-template-columns:200px 1fr;gap:16px}
+.rail{display:flex;flex-direction:column;gap:4px}.rail button{text-align:left;background:var(--panel);border:1px solid var(--line);color:var(--t2);
+ padding:10px 12px;border-radius:8px;cursor:pointer;font-weight:600}.rail button.on{border-color:var(--amber);color:var(--amber)}
+.rail .g{font:700 10px var(--mono);letter-spacing:2px;color:var(--t3);margin:10px 0 2px}
+.pane{display:none}.pane.on{display:block}
+label.sl{display:block;margin:10px 0 2px;color:var(--t2);font-size:14px}label.sl b{color:var(--amber);font-family:var(--mono)}
+input[type=range]{width:100%;accent-color:var(--amber)}
+.out{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.drawer{position:fixed;top:0;right:-560px;width:540px;max-width:95vw;height:100%;background:var(--panel);border-left:1px solid var(--amber);
+ z-index:50;padding:22px;transition:right .3s;overflow:auto}.drawer.on{right:0}
+.drawer .x{position:absolute;top:12px;right:16px;cursor:pointer;font-size:22px;color:var(--t3)}
+.drawer dl{display:grid;grid-template-columns:120px 1fr;gap:6px 12px;font-size:14px}.drawer dt{color:var(--t3);font-family:var(--mono);font-size:11px;letter-spacing:1px;padding-top:3px}
+.foot{padding:14px 22px;border-top:1px solid var(--line);font:11px var(--mono);letter-spacing:1.5px;color:var(--t3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.chip{font:700 10px var(--mono);letter-spacing:1.5px;padding:2px 6px;border-radius:4px;border:1px solid var(--cyan);color:var(--cyan)}
+.chip.upd{border-color:var(--amber);color:var(--amber)}
+body.pres{font-size:19px}body.pres h1{font-size:38px}body.pres .tile .v{font-size:42px}
+.timer{display:none;font:700 14px var(--mono);color:var(--amber)}body.pres .timer{display:inline}
+@media(max-width:1000px){.tiles{grid-template-columns:repeat(2,1fr)}.grid2,.chap,.console{grid-template-columns:1fr}.map{height:380px}.nav button{padding:6px 8px}}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="brand">DARK<span>·</span>WATERS</div><span class="cls">UNCLASSIFIED</span>
+  <span class="clock" id="clock"></span><span class="timer" id="timer">15:00</span>
+  <div class="nav">
+    <button data-v="cmd" class="on">COMMANDER</button><button data-v="brief">BRIEFING</button><button data-v="con">OPS CONSOLE</button>
+    <button id="analyst" title="Classic 9-page analyst dashboard">ANALYST ↗</button>
+  </div>
+</div>
+
+<!-- ============================== COMMANDER ============================== -->
+<section class="view on" id="v-cmd">
+  <div class="kick">Commander view · Western Indian Ocean · data to <span class="upd-date"></span></div>
+  <h1>The Strait closed, the ships went dark, and India's buffer is thin</h1>
+  <div class="tiles" id="tiles"></div>
+  <div class="bluf" id="bluf"></div>
+  <div class="grid2">
+    <div class="panel"><h3>Dark vessels and threat-opacity, 1–14 Mar 2026 · select a marker</h3><div id="map" class="chart map"></div></div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="panel"><h3>Orders · select for detail</h3><div class="orders" id="orders"></div></div>
+      <div class="panel"><h3>Chokepoint watch-list (Threat-Opacity Index)</h3><table class="watch" id="watch" style="width:100%"></table></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== BRIEFING ============================== -->
+<section class="view" id="v-brief"><div id="chapters"></div></section>
+
+<!-- ============================== CONSOLE ============================== -->
+<section class="view" id="v-con">
+  <div class="console">
+    <div class="rail" id="rail">
+      <div class="g">DECIDE</div><button data-p="spr" class="on">SPR what-if</button><button data-p="ctoi">Threat-Opacity weights</button>
+      <div class="g">WARN</div><button data-p="ind">Four indicators</button><button data-p="scen">Scenarios vs actual</button>
+      <div class="g">VERIFY</div><button data-p="zones">Dark rate by zone</button><button data-p="model">Model</button><button data-p="about">Data &amp; limits</button>
+    </div>
+    <div>
+      <div class="pane on" id="p-spr">
+        <div class="kick">Decide · India energy</div><h2>How long does the Strategic Petroleum Reserve last?</h2>
+        <div class="grid2" style="margin-top:0">
+          <div class="panel">
+            <label class="sl">India crude via Hormuz, pre-war <b id="vH"></b></label><input type="range" id="sH" min="2" max="2.7" step="0.1" value="2.5">
+            <label class="sl">Hormuz flow still arriving <b id="vR"></b></label><input type="range" id="sR" min="0" max="100" step="5" value="5">
+            <label class="sl">Lost crude replaced by other suppliers <b id="vS"></b></label><input type="range" id="sS" min="0" max="100" step="5" value="50">
+            <label class="sl">SPR size, million barrels <b id="vB"></b></label><input type="range" id="sB" min="20" max="100" step="1" value="39">
+            <div class="out" id="sprOut"></div>
+            <div class="ev">SPR 5.33 Mt ≈ 39.1 mn bbl. Phase-II would add roughly 48 mn bbl. Inputs are ranges from secondary sources; outputs are planning bands.</div>
+          </div>
+          <div class="panel"><h3>Days of cover by substitution (current settings)</h3><div id="sprChart" class="chart"></div></div>
+        </div>
+      </div>
+      <div class="pane" id="p-ctoi">
+        <div class="kick">Decide · escorts and ISR</div><h2>Rank the chokepoints with your own weights</h2>
+        <div class="panel">
+          <label class="sl">Strike intensity within 500 km <b id="vw1"></b></label><input type="range" id="w1" min="0" max="1" step="0.01" value="0.33">
+          <label class="sl">Non-fishing dark rate <b id="vw2"></b></label><input type="range" id="w2" min="0" max="1" step="0.01" value="0.33">
+          <label class="sl">Large-vessel dark rate <b id="vw3"></b></label><input type="range" id="w3" min="0" max="1" step="0.01" value="0.33">
+          <div id="ctoiChart" class="chart"></div>
+          <div class="ev">Across 5,000 random weightings, Strait of Hormuz, Gulf of Oman and Persian Gulf stay in the top three in more than 99% of runs.</div>
+        </div>
+      </div>
+      <div class="pane" id="p-ind">
+        <div class="kick">Warn · Recommendation R2 prototype</div><h2>Four behavioural indicators to watch weekly</h2>
+        <div class="tiles" id="indTiles"></div>
+        <div class="panel" style="margin-top:12px"><h3>Hormuz transits, 7-day average, with events</h3><div id="indChart" class="chart"></div></div>
+      </div>
+      <div class="pane" id="p-scen">
+        <div class="kick">Warn · planning to March 2027</div><h2>Actual traffic against the three scenarios submitted on 20 Sep</h2>
+        <div class="panel"><div id="scenChart" class="chart" style="height:440px"></div><div class="ev" id="scenNote"></div></div>
+      </div>
+      <div class="pane" id="p-zones">
+        <div class="kick">Verify · Sentinel-1 vs AIS</div><h2>Non-fishing dark rate by zone, with 95% intervals</h2>
+        <div class="panel"><div id="zoneChart" class="chart" style="height:480px"></div></div>
+      </div>
+      <div class="pane" id="p-model">
+        <div class="kick">Verify · gradient boosting, 11 features</div><h2>Dark spots predicted on seas the model never saw</h2>
+        <div class="tiles" id="modelTiles"></div>
+        <div class="panel" style="margin-top:12px"><h3>Permutation importance</h3><div id="impChart" class="chart"></div></div>
+      </div>
+      <div class="pane" id="p-about">
+        <div class="kick">Verify · data and limits</div><h2>Two CDM datasets, one open source</h2>
+        <div class="panel" id="about"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="drawer" id="drawer"><span class="x" id="dx">✕</span><div id="dbody"></div></div>
+<div class="foot"><span>DARK WATERS · CDM DATATHON-2026 · THEME 6.2 · CAPT SIDDHARTH SANGWAN, FCE/MCTE MHOW</span>
+<span>RUN <b id="rid"></b> · KEYS: 1 2 3 views · P presentation mode · ESC close</span></div>
+
+<script>/*ECHARTS*/</script>
+<script>
+const D = /*DATA*/;
+const WORLD = /*GEO*/;
+/*APP*/
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+Cluster,Detections,Lat,Lon,Median_Length_m,Nearest_Port,Median_Dist_Port_km,Zone,Scenes,Days
+1,650,25.437,54.942,174.983,Dubai,43.0,Persian Gulf,10,6
+13,325,25.289,56.504,161.303,Khor Fakkan,14.5,Gulf of Oman,3,3
+17,223,27.005,56.322,174.995,Qeshm,11.1,Strait of Hormuz,4,3
+6,109,25.821,51.839,145.302,Ras Laffan,28.9,Persian Gulf,8,5
+14,93,24.727,56.719,163.111,Sohar,43.8,Gulf of Oman,2,2
+15,63,25.746,56.94,180.705,Khor Fakkan,71.6,Strait of Hormuz,3,2
+19,41,25.716,53.597,258.554,Abu Dhabi,151.5,Persian Gulf,4,4
+22,34,26.531,54.93,118.252,Qeshm,142.2,Persian Gulf,2,2
+8,33,27.531,52.402,173.744,Ras Laffan,198.0,Persian Gulf,4,4
+3,33,25.372,51.823,164.827,Doha,26.6,Persian Gulf,4,4
+11,19,29.269,49.308,241.096,Kharg Island,97.6,Persian Gulf,3,3
+10,18,29.165,50.427,284.952,Kharg Island,15.7,Persian Gulf,3,2
+18,18,31.592,32.249,133.924,Port Said,36.2,Eastern Mediterranean,3,3
+2,15,24.443,52.486,188.848,Doha,133.9,Persian Gulf,3,3
+7,14,27.793,51.916,126.677,Bushehr,168.95,Persian Gulf,3,3
+5,12,24.73,53.561,92.582,Abu Dhabi,85.65,Persian Gulf,2,2
+20,12,25.211,60.544,215.297,Chabahar,12.05,Gulf of Oman,5,4
+4,12,25.149,53.339,142.039,Abu Dhabi,126.0,Persian Gulf,3,3
+16,12,25.682,56.63,128.546,Khor Fakkan,45.45,Strait of Hormuz,3,3
+9,12,29.842,49.229,143.525,Khorramshahr,117.3,Persian Gulf,4,4
+0,11,15.282,42.644,164.952,Hodeidah,57.8,Red Sea & Suez,2,2
+12,11,26.682,50.267,163.232,Ras Tanura,13.9,Persian Gulf,3,3
+21,8,31.912,34.377,156.557,Tel Aviv Yafo,38.1,Eastern Mediterranean,3,3
+23,8,25.025,53.744,92.296,Abu Dhabi,83.65,Persian Gulf,3,3

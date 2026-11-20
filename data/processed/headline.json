@@ -1,0 +1,95 @@
+{
+ "sar_detections": 107257,
+ "sar_dark": 42455,
+ "war_dark_rate_nf": 56.6,
+ "row_dark_rate_nf": 13.8,
+ "war_dark_nf": 2783,
+ "war_nonfishing": 4918,
+ "odds_ratio": 8.2,
+ "rate_ratio": 4.1,
+ "hormuz_large_dark_rate": 73.0,
+ "map_dark_80m": 2321,
+ "hormuz_baseline": 85.1,
+ "missing_to_20sep": 16022,
+ "missing_tanker_to_20sep": 9200,
+ "hormuz_27feb": 64,
+ "hormuz_28feb": 57,
+ "hormuz_1mar": 20,
+ "hormuz_2mar": 4,
+ "update_end": "2026-11-08",
+ "missing_to_update": 20019,
+ "missing_tanker_to_update": 11477,
+ "since_sub_mean": 3.6,
+ "since_sub_pct": 4.2,
+ "latest_ma7": 3.9,
+ "latest_pct": 4.5,
+ "scen_mar27": {
+  "S1_Negotiated_reopening": 72.0,
+  "S2_Managed_passage_tolls": 38.0,
+  "S3_Protracted_RedSea_analogue": 16.0
+ },
+ "scen_on_update": {
+  "S1_Negotiated_reopening": 43.9,
+  "S2_Managed_passage_tolls": 7.0,
+  "S3_Protracted_RedSea_analogue": 4.6
+ },
+ "conflict_rows": 149825,
+ "strikes_mar26": 1406,
+ "strikes_2025_avg": 252.0,
+ "strikes_ratio": 5.6,
+ "gulf_strikes_h1": {
+  "Bahrain": [
+   0,
+   50
+  ],
+  "Kuwait": [
+   0,
+   87
+  ],
+  "Oman": [
+   0,
+   19
+  ],
+  "Qatar": [
+   1,
+   20
+  ],
+  "Saudi Arabia": [
+   3,
+   28
+  ],
+  "United Arab Emirates": [
+   0,
+   101
+  ]
+ },
+ "spr_5_0": 16.0,
+ "spr_5_50": 33.0,
+ "req_sub_90": 82.0,
+ "spr_mb": 39.1,
+ "hormuz_crude_mbd": 2.5,
+ "model_auc": 0.811,
+ "model_auc_no_conflict": 0.789,
+ "fe_or_per_day": 1.31,
+ "fe_ci": [
+  1.19,
+  1.44
+ ],
+ "or_ci": [
+  7.7,
+  8.7
+ ],
+ "its_drop": 89.5,
+ "its_ci": [
+  82,
+  94
+ ],
+ "its_tanker": 91.5,
+ "mc_spr_p50": 59,
+ "ctoi_weights": 5000,
+ "india_share_crude": 41,
+ "india_share_lng": 55,
+ "india_share_lpg": 88,
+ "spr_days_net_imports": 9.5,
+ "run_id": "DW-79E48B65"
+}
