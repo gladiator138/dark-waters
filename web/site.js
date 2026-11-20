@@ -1,8 +1,10 @@
 const H = D.headline, $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const C = {red:"#E5484D", amber:"#F0B03A", green:"#3FB950", cyan:"#4FC3F7", t2:"#AFC0D0", t3:"#7F93A8", line:"#1E3A55", muted:"#5D7186"};
 const fmt = n => n.toLocaleString("en-US");
-const dt = s => new Date(s + "T00:00:00Z").toLocaleDateString("en-GB", {day: "2-digit", month: "short", year: "numeric", timeZone: "UTC"});
+const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const dt = s => { const d = new Date(s + "T00:00:00Z"); return `${String(d.getUTCDate()).padStart(2, "0")} ${MON[d.getUTCMonth()]} ${d.getUTCFullYear()}`; };
 const SITE_URL = "/*SITEURL*/";
+const O = D.outlook;
 echarts.registerMap("world", WORLD);
 const charts = [];
 function chart(el, opt) {
@@ -32,13 +34,15 @@ function go(v) {
   $$(".view").forEach(s => s.classList.toggle("on", s.id === "v-" + v));
   setTimeout(() => charts.forEach(c => c.resize()), 30);
   if (v === "brief") reveal();
+  if (v === "out") drawOutlook();
   scrollTo(0, 0);
 }
 $$(".nav button[data-v]").forEach(b => b.onclick = () => go(b.dataset.v));
 $("#analyst").onclick = () => { const a = document.createElement("a"); a.href = SITE_URL + "/?mode=analyst"; a.target = "_top"; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove(); };
 addEventListener("keydown", e => {
   if (e.target.tagName === "INPUT") return;
-  if (e.key === "1") go("cmd"); if (e.key === "2") go("brief"); if (e.key === "3") go("con");
+  if (e.key === "1") go("cmd"); if (e.key === "2") go("out"); if (e.key === "3") go("brief"); if (e.key === "4") go("con");
+  if (e.key.toLowerCase() === "v") openGate();
   if (e.key === "Escape") $("#drawer").classList.remove("on");
   if (e.key.toLowerCase() === "p") pres();
 });
@@ -91,12 +95,14 @@ const cmax = D.ctoi[0][3];
 $("#watch").innerHTML = `<tr><th>#</th><th>ZONE</th><th>INDEX</th><th style="width:34%"></th><th>DARK NF</th></tr>` +
   D.ctoi.slice(0, 7).map((z, i) => `<tr><td>${i + 1}</td><td>${z[0]}</td><td><b>${z[3]}</b></td><td><div class="bar" style="width:${z[3] / cmax * 100}%;background:${i < 3 ? C.red : C.muted}"></div></td><td>${Math.round(z[9] * 100)}%</td></tr>`).join("");
 
-function mapOpt(el) {
+function mapOpt(el, role = "HQIDS") {
+  const RC = (D.outlook && D.outlook.risk_cells) || [];
   const c = chart(el, {
     tooltip: {trigger: "item", backgroundColor: "#0C1C2C", borderColor: C.line, textStyle: {color: "#E6EDF4"}},
     geo: {map: "world", roam: true, center: [54, 20], zoom: 4.6, itemStyle: {areaColor: "#1B3550", borderColor: "#3E6488", borderWidth: 0.8}, labelLayout: {hideOverlap: true},
       emphasis: {disabled: true}, label: {show: false}},
-    legend: {top: 4, left: 6, textStyle: {color: C.t2}, data: ["AIS-visible (sample)", "Dark, 80 m+", "Dark anchorage", "Chokepoint index"]},
+    legend: {top: 4, left: 6, textStyle: {color: C.t2}, data: ["AIS-visible (sample)", "Dark, 80 m+", "Dark anchorage", "Chokepoint index", "Predicted very-high cell"],
+      selected: {"Predicted very-high cell": ["ISRO", "NAVY"].includes(role), "AIS-visible (sample)": role !== "ISRO"}},
     series: [
       {name: "AIS-visible (sample)", type: "scatter", coordinateSystem: "geo", data: D.vis_pts, symbolSize: 2.5, itemStyle: {color: C.cyan, opacity: .35}, silent: true},
       {name: "Dark, 80 m+", type: "scatter", coordinateSystem: "geo", data: D.dark_pts, symbolSize: 3.5, itemStyle: {color: C.red, opacity: .8},
@@ -108,6 +114,9 @@ function mapOpt(el) {
        symbolSize: v => 8 + v[2] / 5, itemStyle: {color: "rgba(0,0,0,0)", borderColor: "#fff", borderWidth: 1.5},
        label: {show: true, formatter: p => p.data.z[3] >= 30 ? p.data.z[0] : "", position: "right", color: "#E6EDF4", fontSize: 11, textBorderColor: "#05101A", textBorderWidth: 3}, labelLayout: {hideOverlap: true},
        tooltip: {formatter: p => `<b>${p.data.z[0]}</b><br>Threat-Opacity Index ${p.data.z[3]}<br>Dark rate (non-fishing) ${Math.round(p.data.z[9] * 100)}%`}},
+      {name: "Predicted very-high cell", type: "scatter", coordinateSystem: "geo", symbol: "rect", data: RC.map(r => ({value: [r[0], r[1], r[2]], r})),
+       symbolSize: 9, itemStyle: {color: "rgba(154,123,255,.25)", borderColor: "#9A7BFF", borderWidth: 1.2},
+       tooltip: {formatter: p => `<b>Predicted dark cell</b><br>${p.data.r[3]} · ${p.data.r[1]}° N ${p.data.r[0]}° E<br>P(dark) ${Math.round(p.data.r[2] * 100)}%`}},
     ]});
   c.off("click");
   c.on("click", p => {
@@ -117,7 +126,7 @@ function mapOpt(el) {
   });
   return c;
 }
-mapOpt($("#map"));
+
 
 /* -------------------------------------------------- briefing */
 const HZ = D.hormuz, SC = D.scenarios;
@@ -265,3 +274,104 @@ $("#about").innerHTML = `<dl style="display:grid;grid-template-columns:200px 1fr
 <dt>Limits</dt><dd style="margin:0">14 days of radar only · "dark" includes spoofed as well as switched-off AIS · PortWatch is AIS-based, so a lower bound in war · stress-test inputs are secondary-source ranges</dd>
 <dt>Run ID</dt><dd style="margin:0"><b>${H.run_id}</b>: a hash of every headline number; the same ID is on the analyst dashboard</dd></dl>`;
 pane("spr");
+
+
+/* ================================================== DEPARTMENT LOGIN + ROLE VIEWS */
+const DEP = O.depts, DK = Object.keys(DEP), SCN = O.scenarios, IMP = O.impact, TRK = O.tracking;
+const SCOL = {S1: C.green, S2: C.cyan, S3: C.red};
+let ROLE = null;
+try { ROLE = sessionStorage.getItem("dw-dept"); } catch {}
+const TL = {  // tile library
+  flow: () => TILES[0], dark: () => TILES[1], spr: () => TILES[2], ctoi: () => TILES[3],
+  outlook: () => ({cls: "R", l: "2027 forecast", v: `${SCN[TRK].mean_2027}/day`, s: `Hormuz, tracking ${TRK} (${SCN[TRK].name}) · ${SCN[TRK].pct_2027}% of pre-war`, ev: () => go("out")}),
+  lpg: () => ({cls: "R", l: "LPG at risk, 2027", v: `${IMP[TRK].lpg_at_risk_pct}%`, s: `of India's LPG imports under ${TRK} · crude ${IMP[TRK].crude_at_risk_pct}%`, ev: () => go("out")}),
+  replace: () => ({cls: "A", l: "Crude to replace, 2027", v: `${IMP[TRK].crude_to_replace_mn_bbl} mn bbl`, s: `under ${TRK}; ${IMP[TRK].sub_for_90}% substitution for 90 days of SPR`, ev: () => go("out")}),
+  cells: () => ({cls: "A", l: "SAR tasking cells", v: `${O.n_risk_cells}`, s: `very-high-risk 1° cells, W. Indian Ocean · AUC ${H.model_auc}`, ev: () => { go("con"); pane("model"); }}),
+  anch: () => ({cls: "R", l: "Dark anchorages", v: `${D.clusters.length}`, s: `largest off ${D.clusters[0][5]} (${D.clusters[0][1]} dark)`, ev: () => go("cmd")}),
+  strikes: () => ({cls: "A", l: "Strikes, 2027 range", v: `${fmt(O.strikes_2027.p10)}–${fmt(O.strikes_2027.p90)}`, s: `a week (median ${O.strikes_2027.p50}); 2025 avg ${O.strikes_2027.avg_2025}`, ev: () => go("out")}),
+  gnss: () => ({cls: "A", l: "GNSS interference", v: "1,100+", s: "vessels hit in 24 h on 1 Mar (Windward) · external feed", ev: () => drawer("GNSS interference", [["Source", "Windward via CNBC/CNN, 1 Mar 2026"], ["Scale", "1,100 to 1,650 vessels affected by GPS/AIS interference"], ["In CDM data?", "No: an external feed to plug in (indicator 4 of R2)"]])}),
+  track: () => ({cls: "R", l: "Scenario tracking", v: TRK, s: `${SCN[TRK].name}: error ${O.rmse[TRK]} vs ${O.rmse.S1} for S1`, ev: () => { go("con"); pane("scen"); }}),
+};
+const ROLE_TILES = {ALL: ["flow", "dark", "outlook", "spr"], HQIDS: ["track", "flow", "dark", "outlook"], NAVY: ["dark", "anch", "ctoi", "cells"],
+  ISRO: ["cells", "dark", "anch", "ctoi"], DIA: ["track", "flow", "dark", "strikes"], MOPNG: ["spr", "replace", "lpg", "outlook"],
+  MEA: ["track", "outlook", "replace", "flow"], DGS: ["gnss", "dark", "ctoi", "flow"]};
+function openGate() {
+  $("#gateIn").innerHTML = `<div class="kick">DARK WATERS · CHOKEPOINT EARLY-WARNING CONSOLE · RUN ${H.run_id}</div>
+    <h1>Select your department</h1><div class="sub">Each department sees its own indicators, its 0600 brief and the actions it owns from the six recommendations. Demo login: no password, open-source data only.</div>
+    <div class="gate-g"><button class="gc all" data-d="ALL" style="--rc:#E6EDF4"><div><div class="s">ALL DEPARTMENTS</div><div class="n">Joint view for the jury</div></div><div class="f">Every indicator and all six orders, R1–R6</div></button>
+    ${DK.map(k => { const d = DEP[k]; return `<button class="gc" data-d="${k}" style="--rc:${d.color}"><div class="s">${d.short}</div><div class="n">${d.name}</div><div class="f">${d.focus}</div><div class="r">OWNS ${d.recs.join(" · ")}</div></button>`; }).join("")}</div>
+    <div class="pin">🔒 UNCLASSIFIED DEMO · ROLE IS KEPT FOR THIS SESSION ONLY · PRESS V TO SWITCH</div>`;
+  $("#gate").classList.add("on");
+  $$(".gc").forEach(b => b.onclick = () => { ROLE = b.dataset.d; try { sessionStorage.setItem("dw-dept", ROLE); } catch {} $("#gate").classList.remove("on"); paint(); });
+}
+$("#deptBtn").onclick = openGate;
+function deptOf(r) { return r === "ALL" ? {short: "ALL DEPTS", name: "Joint view", color: "#E6EDF4", recs: ["R1", "R2", "R3", "R4", "R5", "R6"], focus: "Every indicator and all six orders"} : DEP[r]; }
+function paint() {
+  const r = ROLE || "ALL", d = deptOf(r);
+  $("#deptBtn").textContent = `DEPT · ${d.short} ▾`; $("#deptBtn").style.setProperty("--rc", d.color);
+  $("#cmdKick").innerHTML = `${d.short} · ${r === "ALL" ? "joint view" : "department view"} · Western Indian Ocean · data to ${dt(H.update_end)}`;
+  $("#cmdTitle").textContent = r === "ALL" ? "The Strait closed, the ships went dark, and India's buffer is thin" : `${d.name}`;
+  $("#cmdTitle").insertAdjacentHTML("beforeend", r === "ALL" ? "" : `<div style="font-size:17px;font-weight:500;color:#AFC0D0;margin-top:4px">${d.focus} · owns ${d.recs.join(", ")}</div>`);
+  const tl = ROLE_TILES[r].map(k => TL[k]());
+  $("#tiles").innerHTML = tl.map((t, i) => `<div class="tile ${t.cls}" data-j="${i}"><div class="l">${t.l}<span class="rag">${{R: "RED", A: "AMBER", G: "GREEN"}[t.cls]}</span></div><div class="v">${t.v}</div><div class="s">${t.s}</div></div>`).join("");
+  $$(".tile[data-j]").forEach(e => e.onclick = () => tl[+e.dataset.j].ev());
+  const mine = ORD.filter(o => d.recs.includes(o[0]));
+  $("#ordH").textContent = r === "ALL" ? "Orders · select for detail" : `Orders owned by ${d.short} · select for detail`;
+  $("#orders").innerHTML = mine.map(o => `<div class="order" data-id="${o[0]}"><div class="id">${o[0]}</div><div><div class="t">${o[2]}</div><div class="o">${o[1]} · ${o[3]}</div></div><div class="w">${o[4]}</div></div>`).join("");
+  $$("#orders .order").forEach(e => e.onclick = () => { const o = ORD.find(x => x[0] === e.dataset.id); drawer(`${o[0]} · ${o[2]}`, [["Line of effort", o[1]], ["Action", o[5]], ["Owner", o[3]], ["When", o[4]], ["Evidence", o[6]]]); });
+  const acts = r === "ALL" ? O.actions.HQIDS : O.actions[r];
+  $("#bluf").innerHTML = `<b>BLUF · 0600</b>` + (r === "ALL" ? $("#bluf").dataset.base :
+    `Hormuz is at ${H.latest_pct}% of pre-war and the data track ${TRK} (${SCN[TRK].name}), ${SCN[TRK].mean_2027} ships/day across 2027. ${acts[0][1]}`);
+  // 0600 brief (OODA) + inbox
+  const inbox = O.inbox.filter(m => r === "ALL" || m.to.includes(r)).slice(0, 7);
+  const obs = ROLE_TILES[r].map(k => TL[k]()).slice(0, 3).map(t => `${t.l}: <b>${t.v}</b>`).join("<br>");
+  $("#cmdBrief").innerHTML = `<div class="panel"><h3>${d.short} · daily 0600 brief · ${dt(H.update_end)}</h3><div class="ooda">
+    <div><span class="h">OBSERVE</span>${obs}</div>
+    <div><span class="h">ORIENT</span>Data track <b>${TRK}</b> (error ${O.rmse[TRK]} ships/day vs ${O.rmse.S1} for S1). Strike counts gave no warning before 28 Feb; behaviour did.</div>
+    <div><span class="h">DECIDE</span>${acts.map(a => `<i style="font-style:normal;color:#F0B03A;font:700 11px var(--mono)">${a[0].toUpperCase()}</i><br>${a[1]}`).slice(0, 2).join("<br>")}</div>
+    <div><span class="h">ACT</span>${mine.map(o => `<b style="color:#F0B03A">${o[0]}</b> ${o[2]} · ${o[4]}`).join("<br>")}</div></div>
+    <div class="ev">Auto-drafted from the data; staff check before release. Refresh weekly with new PortWatch and SAR passes.</div></div>
+    <div class="panel"><h3>Inbox · routed to ${d.short}</h3>${inbox.map(m => `<div class="msg ${m.flash ? "flash" : ""}"><div class="t">${dt(m.date)} · ${m.flash ? "FLASH" : "ROUTINE"} · ${m.theatre.toUpperCase()}</div>${m.flash ? "⚡ " : ""}${m.text}</div>`).join("")}</div>`;
+  mapOpt($("#map"), r);
+  if ($("#v-out").classList.contains("on")) drawOutlook();
+}
+$("#bluf").dataset.base = $("#bluf").innerHTML.replace(/^<b>BLUF<\/b>/, "");
+
+/* ================================================== 2027 OUTLOOK: forecast -> India impact -> India's actions */
+function drawOutlook() {
+  const r = ROLE || "ALL", S = ["S1", "S2", "S3"], st = O.strikes_2027;
+  $("#outlook").innerHTML = `<div class="kick">2027 outlook · scenario range from history, not a validated forecast · data to ${dt(O.data_end)}</div>
+  <h1>2027: what happens at Hormuz, what it does to India, and what India should do</h1>
+  <div class="step"><div class="k">1</div><div><div class="kick">Forecast</div><h2 style="margin:0">Hormuz traffic in 2027 under three scenarios</h2></div></div>
+  <div class="scn">${S.map(k => `<div class="c ${k === TRK ? "trk" : ""}" style="--sc:${SCOL[k]}">${k === TRK ? '<span class="trkb">DATA TRACKING</span>' : ""}<div class="h">${k} · ${SCN[k].name.toUpperCase()}</div>
+    <div class="v">${SCN[k].mean_2027}<small style="font-size:16px;color:#AFC0D0"> ships/day</small></div>
+    <div class="s">${SCN[k].pct_2027}% of pre-war across 2027 · Q1–Q4: ${SCN[k].q.join(" · ")}<br>${SCN[k].voyages_lost_2027.toLocaleString("en-US")} voyages lost in 2027${SCN[k].reach_50pct ? ` · half of normal by ${dt(SCN[k].reach_50pct)}` : " · never back to half of normal"}</div>
+    <div class="ev">Fit to actual since 21 Sep: error ${O.rmse[k]} ships/day</div></div>`).join("")}</div>
+  <div class="grid2"><div class="panel"><h3>Actual traffic and the 2027 paths (re-anchored on ${dt(O.data_end)})</h3><div class="chart" id="oChart" style="height:380px"></div></div>
+   <div class="panel"><h3>Regional strike intensity, 2027 range</h3><div class="big" style="font-size:44px">${fmt(st.p10)}–${fmt(st.p90)}<small> strikes a week (80% range)</small></div>
+   <p style="color:#AFC0D0">Median ${st.p50} a week against ${st.avg_2025} in 2025 and ${st.level_h1_2026} in H1 2026. In ${Math.round(st.p_above_2025 * 100)}% of ${st.n_origins} historical 18-month windows the level stayed above 2025.</p>
+   <div class="ev">No strike forecast beat a naive benchmark, so this is a range, not a prediction. The indicators that choose the scenario are behavioural: transits and dark rates, then war-risk premium and GNSS interference.</div></div></div>
+
+  <div class="step"><div class="k">2</div><div><div class="kick">Impact on India</div><h2 style="margin:0">What each scenario means for India's energy in 2027</h2></div></div>
+  <div class="panel"><table class="imp"><tr><th>2027, AVERAGE</th>${S.map(k => `<th style="color:${SCOL[k]}">${k} · ${SCN[k].name.toUpperCase()}${k === TRK ? " ◀ TRACKING" : ""}</th>`).join("")}</tr>
+   ${[["Hormuz flow still arriving", k => IMP[k].retained_pct + "%"], ["Crude gap via Hormuz", k => IMP[k].crude_gap_mbd + " mb/d"], ["Crude to replace over the year", k => IMP[k].crude_to_replace_mn_bbl + " mn bbl"],
+      ["SPR lasts, no substitution", k => IMP[k].spr_days_0 + " days"], ["SPR lasts, 50% substitution", k => IMP[k].spr_days_50 + " days"], ["Substitution for 90 days of SPR", k => IMP[k].sub_for_90 + "%"],
+      ["Share of crude imports at risk", k => IMP[k].crude_at_risk_pct + "%"], ["Share of LNG imports at risk", k => IMP[k].lng_at_risk_pct + "%"], ["Share of LPG imports at risk", k => IMP[k].lpg_at_risk_pct + "%"]]
+     .map(row => `<tr><td>${row[0]}</td>${S.map(k => `<td class="n" style="${k === TRK ? "color:#F0B03A" : ""}">${row[1](k)}</td>`).join("")}</tr>`).join("")}</table>
+   <div class="ev">Assumes India's Hormuz-routed crude (2.5 mb/d), LNG (${H.india_share_lng}%) and LPG (${H.india_share_lpg}%) fall in step with total transits. SPR 39.1 mn bbl. Same model as the submitted SPR stress test; inputs are ranges from secondary sources.</div></div>
+  <div class="bluf"><b>SO WHAT</b>On the path the data are on (${TRK}), India must replace about ${IMP[TRK].crude_to_replace_mn_bbl} mn bbl of crude in 2027, and ${IMP[TRK].lpg_at_risk_pct}% of LPG imports stay at risk. The reserve buys ${IMP[TRK].spr_days_0}–${IMP[TRK].spr_days_50} days; contracts and shipping, not storage, decide the year.</div>
+
+  <div class="step"><div class="k">3</div><div><div class="kick">India's actions</div><h2 style="margin:0">Who does what, and what changes the plan</h2></div></div>
+  <div class="acts">${DK.map(k => { const d = DEP[k]; return `<div class="act ${r === k ? "me" : ""}" style="--rc:${d.color}"><div class="hd"><b>${d.short}</b><span class="chip">${d.recs.join(" · ")}</span></div>
+    <ul>${O.actions[k].map(a => `<li><i>${a[0].toUpperCase()}</i>${a[1]}</li>`).join("")}</ul></div>`; }).join("")}</div>
+  <div class="ev" style="margin-top:12px">${O.note}</div>`;
+  const P27 = D.paths2027, act = HZ.filter(x => x[0] >= "2026-01-01");
+  const days = act.map(x => x[0]).concat(P27.map(x => x[0]));
+  const n = act.length;
+  chart($("#oChart"), {legend: {top: 0, textStyle: {color: C.t2}}, xAxis: ax({type: "category", data: days}), yAxis: ax({type: "value", name: "ships/day"}),
+    series: [{name: "Actual (7-day)", type: "line", showSymbol: false, data: act.map(x => x[3]), lineStyle: {width: 3, color: C.amber}, itemStyle: {color: C.amber},
+      markLine: {symbol: "none", data: [{xAxis: O.data_end, lineStyle: {color: C.t3}, label: {formatter: "today's data", color: C.t3}}, {yAxis: Math.round(H.hormuz_baseline), lineStyle: {color: C.muted}, label: {formatter: "pre-war", color: C.t3}}]}},
+      ...S.map((k, i) => ({name: `${k} ${SCN[k].name}`, type: "line", showSymbol: false, data: Array(n).fill(null).concat(P27.map(x => x[i + 1])), lineStyle: {type: "dashed", width: k === TRK ? 3 : 2, color: SCOL[k]}, itemStyle: {color: SCOL[k]}}))]});
+}
+paint();
+if (!ROLE) openGate();

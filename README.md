@@ -22,9 +22,16 @@ Capt Siddharth Sangwan, FCE/MCTE Mhow · UNCLASSIFIED: open-source data only
 | `data/processed/headline.json` | Every number shown anywhere, with the run ID |
 | `data/cleaning_log.md` | Data preprocessing log |
 
-## Ops site: three levels
+## Ops site
 
-1. **Commander** (one screen): four RAG status tiles, the dark-vessel map with dark anchorages and chokepoint index, six orders (R1–R6) and the chokepoint watch-list. Select any tile, marker or order for its evidence sheet.
+**Department login.** The site opens on *Select your department*: HQ IDS, Navy (IFC-IOR and WNC), ISRO, DIA, MoPNG/ISPRL,
+MEA and DG Shipping, the owners of recommendations R1–R6, or *All departments*. Each department gets its own tiles, its
+0600 brief (Observe, Orient, Decide, Act), the orders it owns and an inbox of routed FLASH events. Press `V` to switch.
+
+**2027 outlook** (`scripts/outlook_2027.py`): 1 forecast (Hormuz under three scenarios re-anchored on 8 Nov 2026, strike range
+from history) → 2 impact on India (crude, SPR days, LNG and LPG at risk) → 3 India's actions by department.
+
+1. **Command** (one screen): four RAG status tiles, the dark-vessel map with dark anchorages and chokepoint index, six orders (R1–R6) and the chokepoint watch-list. Select any tile, marker or order for its evidence sheet.
 2. **Briefing** (scroll story): six findings, each with its chart and evidence line, then the orders.
 3. **Ops console**: Decide (SPR what-if, Threat-Opacity weights) · Warn (four indicators, scenarios vs actual) · Verify (dark rate by zone, model, data and limits).
 
@@ -32,7 +39,7 @@ Keys: `1` `2` `3` switch views, `P` presentation mode with a 15-minute timer, `E
 
 ## Analyst dashboard (`?mode=analyst`)
 
-1 Executive overview · 2 Conflict dynamics · 3 Hormuz supply shock (toggle: post-submission data) · 4 Dark vessels (interactive map filters) · 5 Predicting dark spots · 6 India decision room (live SPR and index what-ifs) · 7 Early warning & scenarios · 8 Recommendations · 9 Data, method & limits.
+1 Executive overview · 2 Conflict dynamics · 3 Hormuz supply shock (toggle: post-submission data) · 4 Dark vessels (interactive map filters) · 5 Predicting dark spots · 6 India decision room (live SPR and index what-ifs) · 7 Early warning & scenarios · 8 Recommendations · 9 Data, method & limits · 10 2027 outlook & departments.
 
 ## Data
 

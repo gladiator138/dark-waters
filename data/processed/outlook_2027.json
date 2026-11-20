@@ -1,0 +1,1025 @@
+{
+ "risk_cells": [
+  [
+   47.5,
+   4.5,
+   0.934,
+   "Other Indian Ocean"
+  ],
+  [
+   41.5,
+   13.5,
+   0.919,
+   "Red Sea & Suez"
+  ],
+  [
+   41.5,
+   18.5,
+   0.902,
+   "Red Sea & Suez"
+  ],
+  [
+   55.5,
+   25.5,
+   0.901,
+   "Persian Gulf"
+  ],
+  [
+   48.5,
+   5.5,
+   0.895,
+   "Other Indian Ocean"
+  ],
+  [
+   54.5,
+   25.5,
+   0.878,
+   "Persian Gulf"
+  ],
+  [
+   56.5,
+   18.5,
+   0.867,
+   "Arabian Sea"
+  ],
+  [
+   50.5,
+   11.5,
+   0.866,
+   "Gulf of Aden"
+  ],
+  [
+   79.5,
+   10.5,
+   0.859,
+   "Other Indian Ocean"
+  ],
+  [
+   51.5,
+   25.5,
+   0.858,
+   "Persian Gulf"
+  ],
+  [
+   56.5,
+   24.5,
+   0.816,
+   "Gulf of Oman"
+  ],
+  [
+   73.5,
+   10.5,
+   0.807,
+   "India West Coast (near-shore)"
+  ],
+  [
+   74.5,
+   10.5,
+   0.802,
+   "India West Coast (near-shore)"
+  ],
+  [
+   56.5,
+   17.5,
+   0.793,
+   "Arabian Sea"
+  ],
+  [
+   58.5,
+   20.5,
+   0.791,
+   "Arabian Sea"
+  ],
+  [
+   44.5,
+   12.5,
+   0.778,
+   "Gulf of Aden"
+  ],
+  [
+   55.5,
+   17.5,
+   0.763,
+   "Arabian Sea"
+  ],
+  [
+   42.5,
+   -0.5,
+   0.76,
+   "Other Indian Ocean"
+  ],
+  [
+   55.5,
+   25.5,
+   0.746,
+   "Strait of Hormuz"
+  ],
+  [
+   79.5,
+   9.5,
+   0.736,
+   "Other Indian Ocean"
+  ],
+  [
+   49.5,
+   26.5,
+   0.732,
+   "Persian Gulf"
+  ],
+  [
+   56.5,
+   25.5,
+   0.731,
+   "Gulf of Oman"
+  ],
+  [
+   34.5,
+   25.5,
+   0.729,
+   "Red Sea & Suez"
+  ],
+  [
+   40.5,
+   -2.5,
+   0.722,
+   "Other Indian Ocean"
+  ],
+  [
+   55.5,
+   26.5,
+   0.717,
+   "Persian Gulf"
+  ],
+  [
+   48.5,
+   29.5,
+   0.713,
+   "Persian Gulf"
+  ],
+  [
+   35.5,
+   32.5,
+   0.711,
+   "Eastern Mediterranean"
+  ],
+  [
+   49.5,
+   29.5,
+   0.697,
+   "Persian Gulf"
+  ],
+  [
+   48.5,
+   28.5,
+   0.695,
+   "Persian Gulf"
+  ],
+  [
+   56.5,
+   25.5,
+   0.693,
+   "Strait of Hormuz"
+  ],
+  [
+   52.5,
+   25.5,
+   0.685,
+   "Persian Gulf"
+  ],
+  [
+   52.5,
+   15.5,
+   0.673,
+   "Arabian Sea"
+  ],
+  [
+   51.5,
+   26.5,
+   0.671,
+   "Persian Gulf"
+  ],
+  [
+   67.5,
+   24.5,
+   0.669,
+   "Arabian Sea"
+  ],
+  [
+   57.5,
+   24.5,
+   0.659,
+   "Gulf of Oman"
+  ],
+  [
+   69.5,
+   21.5,
+   0.64,
+   "India West Coast (near-shore)"
+  ],
+  [
+   50.5,
+   27.5,
+   0.64,
+   "Persian Gulf"
+  ],
+  [
+   37.5,
+   24.5,
+   0.635,
+   "Red Sea & Suez"
+  ],
+  [
+   55.5,
+   26.5,
+   0.633,
+   "Strait of Hormuz"
+  ],
+  [
+   69.5,
+   22.5,
+   0.631,
+   "India West Coast (near-shore)"
+  ],
+  [
+   70.5,
+   22.5,
+   0.631,
+   "India West Coast (near-shore)"
+  ],
+  [
+   44.5,
+   1.5,
+   0.625,
+   "Other Indian Ocean"
+  ],
+  [
+   52.5,
+   26.5,
+   0.624,
+   "Persian Gulf"
+  ],
+  [
+   50.5,
+   26.5,
+   0.619,
+   "Persian Gulf"
+  ],
+  [
+   57.5,
+   23.5,
+   0.618,
+   "Gulf of Oman"
+  ],
+  [
+   50.5,
+   29.5,
+   0.615,
+   "Persian Gulf"
+  ],
+  [
+   42.5,
+   -1.5,
+   0.614,
+   "Other Indian Ocean"
+  ],
+  [
+   51.5,
+   24.5,
+   0.614,
+   "Persian Gulf"
+  ],
+  [
+   49.5,
+   27.5,
+   0.613,
+   "Persian Gulf"
+  ],
+  [
+   42.5,
+   16.5,
+   0.613,
+   "Red Sea & Suez"
+  ],
+  [
+   66.5,
+   24.5,
+   0.609,
+   "Arabian Sea"
+  ],
+  [
+   47.5,
+   29.5,
+   0.607,
+   "Persian Gulf"
+  ],
+  [
+   52.5,
+   24.5,
+   0.601,
+   "Persian Gulf"
+  ],
+  [
+   48.5,
+   27.5,
+   0.593,
+   "Persian Gulf"
+  ],
+  [
+   57.5,
+   25.5,
+   0.593,
+   "Gulf of Oman"
+  ],
+  [
+   49.5,
+   28.5,
+   0.587,
+   "Persian Gulf"
+  ],
+  [
+   57.5,
+   25.5,
+   0.583,
+   "Strait of Hormuz"
+  ],
+  [
+   53.5,
+   25.5,
+   0.581,
+   "Persian Gulf"
+  ],
+  [
+   40.5,
+   -3.5,
+   0.565,
+   "Other Indian Ocean"
+  ],
+  [
+   42.5,
+   14.5,
+   0.563,
+   "Red Sea & Suez"
+  ],
+  [
+   69.5,
+   20.5,
+   0.555,
+   "India West Coast (near-shore)"
+  ],
+  [
+   54.5,
+   24.5,
+   0.554,
+   "Persian Gulf"
+  ],
+  [
+   50.5,
+   28.5,
+   0.549,
+   "Persian Gulf"
+  ],
+  [
+   53.5,
+   24.5,
+   0.549,
+   "Persian Gulf"
+  ],
+  [
+   54.5,
+   26.5,
+   0.548,
+   "Persian Gulf"
+  ],
+  [
+   57.5,
+   26.5,
+   0.538,
+   "Strait of Hormuz"
+  ],
+  [
+   42.5,
+   13.5,
+   0.526,
+   "Other Indian Ocean"
+  ],
+  [
+   51.5,
+   27.5,
+   0.521,
+   "Persian Gulf"
+  ],
+  [
+   57.5,
+   18.5,
+   0.52,
+   "Arabian Sea"
+  ],
+  [
+   68.5,
+   21.5,
+   0.505,
+   "India West Coast (near-shore)"
+  ],
+  [
+   74.5,
+   14.5,
+   0.503,
+   "India West Coast (near-shore)"
+  ],
+  [
+   37.5,
+   18.5,
+   0.502,
+   "Red Sea & Suez"
+  ],
+  [
+   78.5,
+   7.5,
+   0.5,
+   "Other Indian Ocean"
+  ]
+ ],
+ "n_risk_cells": 73,
+ "data_end": "2026-11-08",
+ "current_pct": 4.5,
+ "current_ma7": 3.9,
+ "scenarios": {
+  "S1": {
+   "name": "Negotiated reopening",
+   "ceiling_pct": 85,
+   "mean_2027": 71.8,
+   "pct_2027": 84.4,
+   "q": [
+    70.2,
+    72.3,
+    72.3,
+    72.3
+   ],
+   "dec_2027": 72.3,
+   "voyages_lost_2027": 4854,
+   "reach_50pct": "2026-12-27"
+  },
+  "S2": {
+   "name": "Managed passage, tolls",
+   "ceiling_pct": 45,
+   "mean_2027": 34.5,
+   "pct_2027": 40.5,
+   "q": [
+    23.4,
+    37.8,
+    38.3,
+    38.3
+   ],
+   "dec_2027": 38.3,
+   "voyages_lost_2027": 18474,
+   "reach_50pct": null
+  },
+  "S3": {
+   "name": "Protracted, Red Sea pattern",
+   "ceiling_pct": 20,
+   "mean_2027": 14.4,
+   "pct_2027": 17.0,
+   "q": [
+    8.5,
+    15.2,
+    16.9,
+    17.0
+   ],
+   "dec_2027": 17.0,
+   "voyages_lost_2027": 25792,
+   "reach_50pct": null
+  }
+ },
+ "rmse": {
+  "S1": 15.7,
+  "S2": 1.4,
+  "S3": 0.6
+ },
+ "tracking": "S3",
+ "strikes_2027": {
+  "level_h1_2026": 606,
+  "n_origins": 90,
+  "p10": 289,
+  "p50": 580,
+  "p90": 1388,
+  "avg_2025": 252.0,
+  "p_above_2025": 0.96
+ },
+ "impact": {
+  "S1": {
+   "retained_pct": 84.4,
+   "crude_gap_mbd": 0.39,
+   "crude_to_replace_mn_bbl": 142,
+   "spr_days_0": 100,
+   "spr_days_50": 201,
+   "sub_for_90": 0,
+   "lpg_at_risk_pct": 14,
+   "lng_at_risk_pct": 9,
+   "crude_at_risk_pct": 6
+  },
+  "S2": {
+   "retained_pct": 40.5,
+   "crude_gap_mbd": 1.49,
+   "crude_to_replace_mn_bbl": 543,
+   "spr_days_0": 26,
+   "spr_days_50": 53,
+   "sub_for_90": 71,
+   "lpg_at_risk_pct": 52,
+   "lng_at_risk_pct": 33,
+   "crude_at_risk_pct": 24
+  },
+  "S3": {
+   "retained_pct": 17.0,
+   "crude_gap_mbd": 2.07,
+   "crude_to_replace_mn_bbl": 757,
+   "spr_days_0": 19,
+   "spr_days_50": 38,
+   "sub_for_90": 79,
+   "lpg_at_risk_pct": 73,
+   "lng_at_risk_pct": 46,
+   "crude_at_risk_pct": 34
+  }
+ },
+ "depts": {
+  "HQIDS": {
+   "name": "HQ Integrated Defence Staff",
+   "short": "HQ IDS",
+   "color": "#F0B03A",
+   "recs": [
+    "R2",
+    "R5"
+   ],
+   "focus": "Joint picture, early warning and the two-chokepoint plan",
+   "indicators": [
+    "Hormuz 7-day transits",
+    "War-zone dark rate",
+    "Scenario tracking",
+    "Bab el-Mandeb status"
+   ]
+  },
+  "NAVY": {
+   "name": "Indian Navy \u00b7 IFC-IOR and Western Naval Command",
+   "short": "NAVY",
+   "color": "#4FC3F7",
+   "recs": [
+    "R1",
+    "R3"
+   ],
+   "focus": "SAR-verified picture, dark-vessel flags, escorts and ISR by risk",
+   "indicators": [
+    "Dark vessels 80 m+",
+    "Dark anchorages",
+    "Threat-Opacity Index",
+    "Predicted dark cells"
+   ]
+  },
+  "ISRO": {
+   "name": "ISRO \u00b7 satellite tasking",
+   "short": "ISRO",
+   "color": "#9A7BFF",
+   "recs": [
+    "R1"
+   ],
+   "focus": "Where to point SAR passes before the imagery is needed",
+   "indicators": [
+    "Very-high-risk 1\u00b0 cells",
+    "Model AUC on unseen seas",
+    "Revisit gaps",
+    "Chokepoint coverage"
+   ]
+  },
+  "DIA": {
+   "name": "Defence Intelligence Agency",
+   "short": "DIA",
+   "color": "#E5484D",
+   "recs": [
+    "R2"
+   ],
+   "focus": "Behavioural warning: shipping moves before strikes do",
+   "indicators": [
+    "Pre-war traffic softening",
+    "Dark-rate trend",
+    "Strike intensity",
+    "Key events"
+   ]
+  },
+  "MOPNG": {
+   "name": "MoPNG and ISPRL \u00b7 energy security",
+   "short": "MoPNG",
+   "color": "#3FB950",
+   "recs": [
+    "R4",
+    "R5"
+   ],
+   "focus": "SPR cover, crude substitution, LPG and LNG exposure",
+   "indicators": [
+    "SPR days of cover",
+    "Substitution needed for 90 d",
+    "LPG at risk",
+    "Scenario flow"
+   ]
+  },
+  "MEA": {
+   "name": "Ministry of External Affairs",
+   "short": "MEA",
+   "color": "#2BB3A3",
+   "recs": [
+    "R5"
+   ],
+   "focus": "Diplomatic track for passage, supplier deals and the Red Sea route",
+   "indicators": [
+    "Scenario tracking",
+    "Supplier substitution",
+    "Bab el-Mandeb status",
+    "Negotiation events"
+   ]
+  },
+  "DGS": {
+   "name": "DG Shipping \u00b7 Indian-flag merchant fleet",
+   "short": "DG SHIPPING",
+   "color": "#F59E0B",
+   "recs": [
+    "R6"
+   ],
+   "focus": "Advisories, GNSS-interference reporting and NavIC for Gulf traders",
+   "indicators": [
+    "GNSS interference reports",
+    "Dark-rate by zone",
+    "Hormuz transits",
+    "Advisory level"
+   ]
+  }
+ },
+ "recs": {
+  "R1": [
+   "SENSE",
+   "SAR-verified maritime picture",
+   "Fuse SAR detections with AIS at IFC-IOR; auto-flag dark vessels of 80 m and over near chokepoints",
+   "Navy / IFC-IOR, ISRO",
+   "90 days"
+  ],
+  "R2": [
+   "WARN",
+   "Chokepoint early-warning dashboard",
+   "Four behavioural indicators: transits, dark rate, war-risk premium, GNSS interference",
+   "HQ IDS / DIA",
+   "60 days"
+  ],
+  "R3": [
+   "SHIELD",
+   "Risk-based escorts and ISR",
+   "Allocate by the Threat-Opacity Index, refreshed monthly; add Bab el-Mandeb to SAR tasking",
+   "Navy (WNC)",
+   "Immediate"
+  ],
+  "R4": [
+   "SUSTAIN",
+   "Energy resilience targets",
+   "At least 82% crude-substitution capability; LPG reserve of 30 days or more; SPR Phase-II",
+   "MoPNG / ISPRL",
+   "6\u201312 months"
+  ],
+  "R5": [
+   "SUSTAIN",
+   "Two-chokepoint contingency",
+   "Joint plan for Hormuz and Bab el-Mandeb closing together; bypass pipelines exit via the Red Sea",
+   "HQ IDS / MEA / MoPNG",
+   "90 days"
+  ],
+  "R6": [
+   "SHIELD",
+   "Navigation resilience",
+   "NavIC-capable receivers and GNSS-interference reporting for Indian-flag Gulf traders",
+   "DG Shipping / Navy",
+   "6 months"
+  ]
+ },
+ "actions": {
+  "HQIDS": [
+   [
+    "Now",
+    "Adopt this dashboard as the weekly chokepoint brief; plan on S3 while the data track it (RMSE 0.6 vs 15.7 for S1)."
+   ],
+   [
+    "If S3 holds to Mar 2027",
+    "Activate the two-chokepoint plan: Hormuz and Bab el-Mandeb both contested for most of 2027."
+   ],
+   [
+    "If transits pass 40/day",
+    "Shift from closure to managed-passage posture (S2): escort windows, not escort convoys."
+   ]
+  ],
+  "NAVY": [
+   [
+    "Now",
+    "Flag every dark vessel of 80 m+ within 100 km of a chokepoint; task ISR to the three Gulf dark anchorages."
+   ],
+   [
+    "If S3 holds to Mar 2027",
+    "Sustain Op Urja Suraksha-type escorts through 2027; refresh the Threat-Opacity ranking monthly."
+   ],
+   [
+    "If S1 (reopening)",
+    "Keep SAR-AIS fusion running: dark rates are the first sign of a relapse."
+   ]
+  ],
+  "ISRO": [
+   [
+    "Now",
+    "Task SAR passes to the very-high-risk cells the model flags, before imagery is requested."
+   ],
+   [
+    "If S3 holds to Mar 2027",
+    "Add Bab el-Mandeb and the Gulf of Aden to standing SAR tasking."
+   ],
+   [
+    "Always",
+    "Share detections with IFC-IOR within the pass window, not days later."
+   ]
+  ],
+  "DIA": [
+   [
+    "Now",
+    "Watch the four behavioural indicators weekly; strike counts alone gave no warning in Feb 2026."
+   ],
+   [
+    "Warning sign",
+    "A 30% fall in Hormuz traffic over 8 weeks, as in Nov 2025, with rising dark rates."
+   ],
+   [
+    "If S1",
+    "Monitor for relapse: dark rate rising while transits recover."
+   ]
+  ],
+  "MOPNG": [
+   [
+    "Now",
+    "Plan for S3: 757 mn bbl of Hormuz crude to replace in 2027; SPR lasts 19 days unaided."
+   ],
+   [
+    "Target",
+    "Contract 79% substitution so the SPR lasts 90 days; build an LPG reserve of 30 days (73% of LPG imports at risk under S3)."
+   ],
+   [
+    "If S1",
+    "Even under reopening, 6% of crude imports stay exposed through 2027: keep SPR Phase-II on schedule."
+   ]
+  ],
+  "MEA": [
+   [
+    "Now",
+    "Pursue assured-passage arrangements for Indian-flag and India-bound ships."
+   ],
+   [
+    "If S3 holds to Mar 2027",
+    "Lock in non-Gulf crude and LPG supply deals (Americas, West Africa, Russia) for 2027."
+   ],
+   [
+    "Always",
+    "Coordinate the Red Sea route: Gulf bypass pipelines exit through Bab el-Mandeb."
+   ]
+  ],
+  "DGS": [
+   [
+    "Now",
+    "Issue Gulf advisories tied to the Threat-Opacity Index; mandate GNSS-interference reporting."
+   ],
+   [
+    "Within 6 months",
+    "NavIC-capable receivers on Indian-flag Gulf traders."
+   ],
+   [
+    "If S2",
+    "Brief masters on toll or inspection corridors and approved routes."
+   ]
+  ]
+ },
+ "inbox": [
+  {
+   "date": "2026-09-22",
+   "text": "Iran sets conditions / offers to reopen Hormuz",
+   "theatre": "Hormuz",
+   "flash": true,
+   "to": [
+    "HQIDS",
+    "NAVY",
+    "MOPNG",
+    "DGS",
+    "DIA",
+    "MEA"
+   ]
+  },
+  {
+   "date": "2026-09-15",
+   "text": "Houthis seize Perim Island, Bab el-Mandeb (Sept 2026; day approximate)",
+   "theatre": "Red Sea",
+   "flash": true,
+   "to": [
+    "HQIDS",
+    "NAVY",
+    "MEA",
+    "MOPNG"
+   ]
+  },
+  {
+   "date": "2026-09-10",
+   "text": "Saudi East-West (Petroline) pumping station attacked - Hormuz bypass hit",
+   "theatre": "Red Sea",
+   "flash": true,
+   "to": [
+    "HQIDS",
+    "NAVY",
+    "MEA",
+    "MOPNG"
+   ]
+  },
+  {
+   "date": "2026-07-13",
+   "text": "Houthis resume attacks; Saudi tankers targeted",
+   "theatre": "Red Sea",
+   "flash": true,
+   "to": [
+    "HQIDS",
+    "NAVY",
+    "MEA",
+    "MOPNG"
+   ]
+  },
+  {
+   "date": "2026-07-06",
+   "text": "Iran fires on commercial ships (6\u20137 Jul)",
+   "theatre": "Hormuz",
+   "flash": true,
+   "to": [
+    "HQIDS",
+    "NAVY",
+    "MOPNG",
+    "DGS",
+    "DIA",
+    "MEA"
+   ]
+  },
+  {
+   "date": "2026-06-15",
+   "text": "MoU on reopening Hormuz (June 2026; exact day approximate)",
+   "theatre": "Hormuz",
+   "flash": true,
+   "to": [
+    "HQIDS",
+    "NAVY",
+    "MOPNG",
+    "DGS",
+    "DIA",
+    "MEA"
+   ]
+  },
+  {
+   "date": "2026-05-29",
+   "text": "US blockade ends",
+   "theatre": "Hormuz",
+   "flash": true,
+   "to": [
+    "HQIDS",
+    "NAVY",
+    "MOPNG",
+    "DGS",
+    "DIA",
+    "MEA"
+   ]
+  },
+  {
+   "date": "2026-04-13",
+   "text": "US naval blockade of Iranian ports begins",
+   "theatre": "Hormuz",
+   "flash": true,
+   "to": [
+    "HQIDS",
+    "NAVY",
+    "MOPNG",
+    "DGS",
+    "DIA",
+    "MEA"
+   ]
+  },
+  {
+   "date": "2026-04-07",
+   "text": "End of initial closure phase / ceasefire",
+   "theatre": "Hormuz",
+   "flash": true,
+   "to": [
+    "HQIDS",
+    "NAVY",
+    "MOPNG",
+    "DGS",
+    "DIA",
+    "MEA"
+   ]
+  },
+  {
+   "date": "2026-03-23",
+   "text": "Indian Navy launches Operation Urja Suraksha",
+   "theatre": "India",
+   "flash": false,
+   "to": [
+    "HQIDS",
+    "NAVY",
+    "MOPNG"
+   ]
+  },
+  {
+   "date": "2026-03-01",
+   "text": "1,100+ ships hit by GPS/AIS interference in 24 h",
+   "theatre": "Hormuz",
+   "flash": true,
+   "to": [
+    "HQIDS",
+    "NAVY",
+    "MOPNG",
+    "DGS",
+    "DIA",
+    "MEA"
+   ]
+  },
+  {
+   "date": "2026-02-28",
+   "text": "US\u2013Israel strikes on Iran; Iran declares Hormuz closed",
+   "theatre": "Hormuz",
+   "flash": true,
+   "to": [
+    "HQIDS",
+    "NAVY",
+    "MOPNG",
+    "DGS",
+    "DIA",
+    "MEA"
+   ]
+  },
+  {
+   "date": "2026-01-08",
+   "text": "Iran internet blackout and mass-casualty crackdown",
+   "theatre": "Iran",
+   "flash": false,
+   "to": [
+    "DIA",
+    "MEA",
+    "HQIDS"
+   ]
+  },
+  {
+   "date": "2025-12-28",
+   "text": "Iran protests begin",
+   "theatre": "Iran",
+   "flash": false,
+   "to": [
+    "DIA",
+    "MEA",
+    "HQIDS"
+   ]
+  },
+  {
+   "date": "2025-06-13",
+   "text": "12-day Israel\u2013Iran war",
+   "theatre": "Regional",
+   "flash": false,
+   "to": [
+    "DIA",
+    "HQIDS",
+    "MEA"
+   ]
+  },
+  {
+   "date": "2025-01-19",
+   "text": "Houthis pledge to halt most attacks",
+   "theatre": "Maritime",
+   "flash": false,
+   "to": [
+    "NAVY",
+    "DGS",
+    "HQIDS"
+   ]
+  },
+  {
+   "date": "2023-11-19",
+   "text": "Houthi campaign on Red Sea shipping begins",
+   "theatre": "Maritime",
+   "flash": false,
+   "to": [
+    "NAVY",
+    "DGS",
+    "HQIDS"
+   ]
+  },
+  {
+   "date": "2023-10-07",
+   "text": "Gaza war begins",
+   "theatre": "Regional",
+   "flash": false,
+   "to": [
+    "DIA",
+    "HQIDS",
+    "MEA"
+   ]
+  }
+ ],
+ "note": "Scenario range, not a validated forecast. The submitted scenario paths are re-anchored on the actual level on 08 Nov 2026; strike range from 90 historical 18-month origins."
+}

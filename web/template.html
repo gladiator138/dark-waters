@@ -66,34 +66,68 @@ input[type=range]{width:100%;accent-color:var(--amber)}
 .chip.upd{border-color:var(--amber);color:var(--amber)}
 body.pres{font-size:19px}body.pres h1{font-size:38px}body.pres .tile .v{font-size:42px}
 .timer{display:none;font:700 14px var(--mono);color:var(--amber)}body.pres .timer{display:inline}
+
+.gate{position:fixed;inset:0;z-index:80;background:radial-gradient(ellipse at 50% 30%,#0E2236 0%,#03080D 75%);display:none;overflow:auto;padding:40px 24px}
+.gate.on{display:block}.gate-in{max-width:1180px;margin:0 auto}
+.gate h1{font-size:34px;margin:6px 0 4px}.gate .sub{color:var(--t2);margin-bottom:22px}
+.gate-g{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gc{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--rc);border-radius:12px;padding:16px;text-align:left;cursor:pointer;color:var(--text);font:inherit;transition:transform .15s,border-color .15s}
+.gc:hover,.gc:focus{transform:translateY(-3px);border-color:var(--rc);outline:none}
+.gc .s{font:900 18px var(--mono);letter-spacing:2px;color:var(--rc)}.gc .n{font-weight:700;margin:4px 0 6px;font-size:15px}
+.gc .f{color:var(--t3);font-size:13px;min-height:36px}.gc .r{font:700 11px var(--mono);color:var(--t2);margin-top:8px;letter-spacing:1px}
+.gc.all{grid-column:span 4;display:flex;gap:18px;align-items:center}.gc.all .f{min-height:0}
+.gate .pin{display:flex;gap:10px;align-items:center;margin-top:18px;color:var(--t3);font:12px var(--mono);letter-spacing:1px}
+.dept{font:800 12px var(--mono);letter-spacing:2px;padding:7px 12px;border-radius:6px;border:1px solid var(--rc,#F0B03A);color:var(--rc,#F0B03A);background:none;cursor:pointer}
+.ooda{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:8px}
+.ooda div{background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:14px}
+.ooda .h{display:block;font:900 12px var(--mono);letter-spacing:3px;color:var(--amber);margin-bottom:4px}
+.msg{border-left:4px solid var(--line);background:rgba(255,255,255,.02);padding:7px 10px;margin-bottom:6px;border-radius:0 6px 6px 0;font-size:14px}
+.msg.flash{border-left-color:var(--red);background:rgba(229,72,77,.08)}.msg .t{font:11px var(--mono);color:var(--t3);letter-spacing:1px}
+.step{display:flex;align-items:center;gap:14px;margin:26px 0 8px}.step .k{font:900 40px var(--mono);color:var(--amber);line-height:1}
+.scn{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.scn .c{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--sc);border-radius:10px;padding:14px 16px;position:relative}
+.scn .c.trk{box-shadow:0 0 0 2px var(--sc)}.scn .c .h{font:800 12px var(--mono);letter-spacing:2px;color:var(--sc)}
+.scn .c .v{font-size:36px;font-weight:900;margin:4px 0}.scn .c .s{color:var(--t2);font-size:14px}
+.trkb{position:absolute;top:12px;right:12px;font:800 10px var(--mono);letter-spacing:1.5px;background:var(--sc);color:#111;padding:2px 7px;border-radius:4px}
+table.imp{width:100%;border-collapse:collapse}table.imp td,table.imp th{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left;font-size:15px}
+table.imp th{font:700 11px var(--mono);letter-spacing:1.5px;color:var(--t3)}table.imp td.n{font-family:var(--mono);font-weight:700}
+.acts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.act{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--rc);border-radius:10px;padding:12px 14px}
+.act.me{box-shadow:0 0 0 2px var(--rc)}.act .hd{display:flex;justify-content:space-between;align-items:center}
+.act .hd b{font:900 14px var(--mono);letter-spacing:2px;color:var(--rc)}.act ul{margin:8px 0 0;padding-left:0;list-style:none}
+.act li{margin:6px 0;font-size:14px}.act li i{font-style:normal;font:700 11px var(--mono);color:var(--amber);letter-spacing:1px;display:block}
+@media(max-width:1000px){.gate-g{grid-template-columns:1fr 1fr}.gc.all{grid-column:span 2}.ooda,.scn,.acts{grid-template-columns:1fr}}
 @media(max-width:1000px){.tiles{grid-template-columns:repeat(2,1fr)}.grid2,.chap,.console{grid-template-columns:1fr}.map{height:380px}.nav button{padding:6px 8px}}
 </style>
 </head>
 <body>
 <div class="top">
   <div class="brand">DARK<span>·</span>WATERS</div><span class="cls">UNCLASSIFIED</span>
-  <span class="clock" id="clock"></span><span class="timer" id="timer">15:00</span>
+  <button class="dept" id="deptBtn" title="Change department (V)"></button><span class="clock" id="clock"></span><span class="timer" id="timer">15:00</span>
   <div class="nav">
-    <button data-v="cmd" class="on">COMMANDER</button><button data-v="brief">BRIEFING</button><button data-v="con">OPS CONSOLE</button>
+    <button data-v="cmd" class="on">COMMAND</button><button data-v="out">2027 OUTLOOK</button><button data-v="brief">BRIEFING</button><button data-v="con">OPS CONSOLE</button>
     <button id="analyst" title="Classic 9-page analyst dashboard">ANALYST ↗</button>
   </div>
 </div>
 
 <!-- ============================== COMMANDER ============================== -->
 <section class="view on" id="v-cmd">
-  <div class="kick">Commander view · Western Indian Ocean · data to <span class="upd-date"></span></div>
-  <h1>The Strait closed, the ships went dark, and India's buffer is thin</h1>
+  <div class="kick" id="cmdKick"></div>
+  <h1 id="cmdTitle"></h1>
   <div class="tiles" id="tiles"></div>
   <div class="bluf" id="bluf"></div>
   <div class="grid2">
     <div class="panel"><h3>Dark vessels and threat-opacity, 1–14 Mar 2026 · select a marker</h3><div id="map" class="chart map"></div></div>
     <div style="display:flex;flex-direction:column;gap:12px">
-      <div class="panel"><h3>Orders · select for detail</h3><div class="orders" id="orders"></div></div>
+      <div class="panel"><h3 id="ordH">Orders · select for detail</h3><div class="orders" id="orders"></div></div>
       <div class="panel"><h3>Chokepoint watch-list (Threat-Opacity Index)</h3><table class="watch" id="watch" style="width:100%"></table></div>
     </div>
   </div>
+  <div class="grid2" id="cmdBrief"></div>
 </section>
 
+<!-- ============================== 2027 OUTLOOK ============================== -->
+<section class="view" id="v-out"><div id="outlook"></div></section>
 <!-- ============================== BRIEFING ============================== -->
 <section class="view" id="v-brief"><div id="chapters"></div></section>
 
@@ -156,9 +190,10 @@ body.pres{font-size:19px}body.pres h1{font-size:38px}body.pres .tile .v{font-siz
   </div>
 </section>
 
+<div class="gate" id="gate"><div class="gate-in" id="gateIn"></div></div>
 <div class="drawer" id="drawer"><span class="x" id="dx">✕</span><div id="dbody"></div></div>
 <div class="foot"><span>DARK WATERS · CDM DATATHON-2026 · THEME 6.2 · CAPT SIDDHARTH SANGWAN, FCE/MCTE MHOW</span>
-<span>RUN <b id="rid"></b> · KEYS: 1 2 3 views · P presentation mode · ESC close</span></div>
+<span>RUN <b id="rid"></b> · KEYS: 1–4 views · V department · P presentation mode · ESC close</span></div>
 
 <script>/*ECHARTS*/</script>
 <script>

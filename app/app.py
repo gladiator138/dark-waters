@@ -97,7 +97,7 @@ def load(name):
 # ---------------------------------------------------------------------------------------- navigation
 PAGES = ["1 · Executive overview", "2 · Conflict dynamics", "3 · Hormuz supply shock", "4 · Dark vessels",
          "5 · Predicting dark spots", "6 · India decision room", "7 · Early warning & scenarios",
-         "8 · Recommendations", "9 · Data, method & limits"]
+         "8 · Recommendations", "9 · Data, method & limits", "10 · 2027 outlook & departments"]
 
 if not ANALYST:
     st.markdown("""<style>header[data-testid="stHeader"], section[data-testid="stSidebar"],
@@ -118,7 +118,7 @@ with st.sidebar:
     st.caption(f"RUN {H['run_id']} · UNCLASSIFIED · open-source data only")
 
 # ---------------------------------------------------------------------------------------- 1 overview
-if page.startswith("1"):
+if page.startswith("1 "):
     kicker("Executive overview")
     st.title("The Strait closed, the ships went dark, and India's buffer is thin")
     c = st.columns(4)
@@ -421,6 +421,46 @@ elif page.startswith("8"):
     st.write("")
     sowhat("A radar-verified, behaviour-driven, continuously refreshed maritime picture is achievable with open data and "
            "tools we already have.", "BOTTOM LINE")
+
+# ---------------------------------------------------------------------------------------- 10 outlook
+elif page.startswith("10"):
+    O = json.loads((P / "outlook_2027.json").read_text())
+    kicker("2027 outlook · scenario range, not a validated forecast")
+    st.title("2027: forecast, impact on India, India's actions")
+    dep = st.selectbox("Department", ["All departments"] + [v["short"] for v in O["depts"].values()])
+    st.subheader("1 · Forecast: Hormuz traffic in 2027")
+    c = st.columns(3)
+    for i, k in enumerate(["S1", "S2", "S3"]):
+        s_ = O["scenarios"][k]
+        with c[i]:
+            card(f"{k} · {s_['name']}" + (" · DATA TRACKING" if k == O["tracking"] else ""), f"{s_['mean_2027']}/day",
+                 f"{s_['pct_2027']}% of pre-war · {s_['voyages_lost_2027']:,} voyages lost in 2027 · fit error {O['rmse'][k]}",
+                 [T["green"], T["cyan"], T["red"]][i])
+    pa = load("hormuz_2027_paths"); u = load("hormuz_update")
+    fig = go.Figure()
+    fig.add_scatter(x=u.Date, y=u.MA7, name="Actual, 7-day", line=dict(color=T["amber"], width=3))
+    for k, cc in zip(["S1", "S2", "S3"], [T["green"], T["cyan"], T["red"]]):
+        fig.add_scatter(x=pa.Date, y=pa[k], name=f"{k} {O['scenarios'][k]['name']}", line=dict(color=cc, dash="dash"))
+    fig.update_layout(title=f"Hormuz ships per day, paths re-anchored on {pd.Timestamp(O['data_end']):%d %b %Y}")
+    show(fig, 420)
+    s27 = O["strikes_2027"]
+    st.caption(f"Regional strikes in 2027: {s27['p10']:,}–{s27['p90']:,} a week (80% range from {s27['n_origins']} historical windows), "
+               f"median {s27['p50']:,}, against {s27['avg_2025']:.0f} in 2025.")
+    st.subheader("2 · Impact on India in 2027")
+    rows = [("Hormuz flow still arriving", "retained_pct", "%"), ("Crude gap via Hormuz", "crude_gap_mbd", " mb/d"),
+            ("Crude to replace over the year", "crude_to_replace_mn_bbl", " mn bbl"), ("SPR lasts, no substitution", "spr_days_0", " days"),
+            ("SPR lasts, 50% substitution", "spr_days_50", " days"), ("Substitution for 90 days", "sub_for_90", "%"),
+            ("Crude imports at risk", "crude_at_risk_pct", "%"), ("LNG imports at risk", "lng_at_risk_pct", "%"), ("LPG imports at risk", "lpg_at_risk_pct", "%")]
+    st.dataframe(pd.DataFrame([[n] + [f"{O['impact'][k][f]}{u_}" for k in ["S1", "S2", "S3"]] for n, f, u_ in rows],
+                              columns=["2027 average", "S1", "S2", "S3"]), hide_index=True, width="stretch")
+    st.subheader("3 · India's actions, by department")
+    for k, d in O["depts"].items():
+        if dep != "All departments" and d["short"] != dep:
+            continue
+        with st.expander(f"{d['short']} · {d['name']} · owns {', '.join(d['recs'])}", expanded=dep != "All departments"):
+            for when, what in O["actions"][k]:
+                st.markdown(f"**{when}.** {what}")
+    st.caption(O["note"])
 
 # ---------------------------------------------------------------------------------------- 9 data
 else:
