@@ -35,7 +35,7 @@ function go(v) {
   scrollTo(0, 0);
 }
 $$(".nav button[data-v]").forEach(b => b.onclick = () => go(b.dataset.v));
-$("#analyst").onclick = () => window.open(SITE_URL + "/?mode=analyst", "_top");
+$("#analyst").onclick = () => { const a = document.createElement("a"); a.href = SITE_URL + "/?mode=analyst"; a.target = "_top"; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove(); };
 addEventListener("keydown", e => {
   if (e.target.tagName === "INPUT") return;
   if (e.key === "1") go("cmd"); if (e.key === "2") go("brief"); if (e.key === "3") go("con");
