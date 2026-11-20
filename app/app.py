@@ -104,7 +104,7 @@ if not ANALYST:
     div[data-testid="collapsedControl"] {display:none !important;}
     .block-container {padding: 0 !important; max-width: 100% !important;}</style>""", unsafe_allow_html=True)
     if SITE.exists():
-        st.iframe(SITE, height=960)
+        st.iframe(SITE, height=1000)
     else:
         st.warning("Ops site not built. Run `python scripts/build_site.py`.")
     st.stop()
