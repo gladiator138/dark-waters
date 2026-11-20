@@ -281,14 +281,67 @@ function verdict(r) {
     <div class="nums">${r.n.map(x => `<div class="num"><div class="v ${x[2]}">${x[0]}</div><div class="l">${x[1]}</div></div>`).join("")}</div>
     <h2>What ${r === R.ALL ? "India should do" : "you do"}</h2><p class="sub">${r === R.ALL ? "The six recommendations in three moves." : "Your part of the six recommendations."}</p>
     <div class="do">${r.a.map((a, i) => `<div class="act ${i ? "" : "now"}"><div class="w">${a[0]}</div><div class="t">${a[1]}</div></div>`).join("")}</div>
-    <div class="card"><h2 style="font-size:22px">Hormuz traffic, and where it is heading</h2><p class="sub" style="margin:0">Ships per day. Dashed line: our 2027 forecast on the path the data follow.</p>
-    <div class="chart" id="vChart"></div>
+    <div class="card"><h2 style="font-size:22px">${VC[KEY()].t}</h2><p class="sub" style="margin:0">${VC[KEY()].s}</p>
+    <div class="chart" id="vChart" style="height:${VC[KEY()].h || 340}px"></div>
     <details><summary>How do we know?</summary><ul>
       <li>Traffic: IMF PortWatch daily transits; fall of ${H.its_drop}% measured with an interrupted time series (95% range ${H.its_ci[0]}–${H.its_ci[1]}%).</li>
       <li>Dark ships: ${fmt(H.sar_detections)} Sentinel-1 radar detections from CDM, matched to AIS. Holds after controls for ship size and location.</li>
       <li>2027: our three submitted scenarios, restarted from today's level. The data match the protracted one best. A range, not a prediction.</li></ul></details></div>`;
-  trafficChart($("#vChart"), false);
+  VC[KEY()].draw($("#vChart"));
 }
+
+/* one chart per department, each answering that department's question */
+const KEY = () => ROLE || "ALL";
+const GULF = ["Strait of Hormuz", "Gulf of Oman", "Persian Gulf"];
+function zoneBars(el, names, hi) {
+  const z = D.zones.filter(x => names.includes(x[0])).sort((a, b) => b[3] - a[3]).reverse();
+  return chart(el, {grid: {left: 150, right: 56, top: 6, bottom: 6}, tooltip: {show: false}, xAxis: ax({type: "value", max: 80, show: false}),
+    yAxis: ax({type: "category", data: z.map(x => x[0].replace("Strait of ", "").replace(" (near-shore)", "")), axisLine: {show: false}, axisLabel: {color: C.t2, fontSize: 14}}),
+    series: [{type: "bar", barWidth: 20, data: z.map(x => ({value: Math.round(x[3] * 100), itemStyle: {borderRadius: 4, color: hi.includes(x[0]) ? C.red : C.muted}})),
+      label: {show: true, position: "right", color: "#EEF3F8", fontSize: 14, fontWeight: 700, formatter: "{c}%"}}]});
+}
+function miniMap(el, cells) {
+  return chart(el, {tooltip: {trigger: "item", backgroundColor: "#0D1E2F", borderColor: C.line, textStyle: {color: "#EEF3F8"}},
+    geo: {map: "world", roam: true, center: [56, 20], zoom: 4.6, layoutCenter: ["50%", "50%"], layoutSize: "160%", itemStyle: {areaColor: "#16304A", borderColor: "#2F5276", borderWidth: .7}, emphasis: {disabled: true}},
+    series: cells ? [{type: "scatter", coordinateSystem: "geo", symbol: "rect", data: O.risk_cells.map(x => ({value: [x[0], x[1]], x})), symbolSize: 11,
+        itemStyle: {color: "rgba(167,139,250,.35)", borderColor: "#A78BFA"}, tooltip: {formatter: p => `<b>Task SAR here</b><br>${p.data.x[3]} · ${p.data.x[1]}° N ${p.data.x[0]}° E<br>Chance a ship is dark: ${Math.round(p.data.x[2] * 100)}%`}}]
+      : [{type: "scatter", coordinateSystem: "geo", data: D.dark_pts, symbolSize: 3.5, itemStyle: {color: C.red, opacity: .8}, silent: true},
+         {type: "effectScatter", coordinateSystem: "geo", data: D.clusters.map(c => ({value: [c[3], c[2], c[1]], c})), symbolSize: v => Math.min(24, Math.max(7, Math.sqrt(v[2]) * .9)),
+          rippleEffect: {scale: 1.8, brushType: "stroke"}, itemStyle: {color: C.amber},
+          tooltip: {formatter: p => `<b>Dark anchorage near ${p.data.c[5]}</b><br>${p.data.c[1]} dark ships · median ${Math.round(p.data.c[4])} m`}}]});
+}
+const VC = {
+  ALL: {t: "Hormuz traffic, and where it is heading", s: "Ships per day. Dashed line: our 2027 forecast on the path the data follow.", draw: el => trafficChart(el, false)},
+  HQIDS: {t: "Which future are we in?", s: "Actual traffic against our three scenarios. The data sit on the red, protracted path.", draw: el => trafficChart(el, true)},
+  NAVY: {t: "Where the dark ships wait", s: "Red: ships radar saw but AIS did not (80 m+). Rings: dark anchorages to task ISR on.", h: 460, draw: el => miniMap(el, false)},
+  ISRO: {t: `Where to point SAR: ${O.n_risk_cells} flagged cells`, s: "Purple squares: 1° sea cells where the model expects most ships to be dark. Tap one for its odds.", h: 460, draw: el => miniMap(el, true)},
+  DIA: {t: "Ships warned. Strikes did not.", s: "Monthly average. Hormuz traffic fell from November 2025; Gulf strikes stayed near zero until the war.", draw: el => {
+    const months = ["2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03"];
+    const hz = months.map(m => { const v = HZ.filter(x => x[0].startsWith(m)).map(x => x[1]); return Math.round(v.reduce((a, b) => a + b, 0) / v.length); });
+    const gs = months.map(m => (D.conflict.find(x => x[0] === m) || [0, 0, 0])[2]);
+    const lab = months.map(m => MON[+m.slice(5) - 1] + " " + m.slice(2, 4));
+    return chart(el, {grid: {left: 50, right: 64, top: 44, bottom: 30}, legend: {top: 0, left: 0, textStyle: {color: C.t2}}, xAxis: ax({type: "category", data: lab}),
+      yAxis: [ax({type: "value", name: "ships/day", nameTextStyle: {color: C.t3}}), ax({type: "value", name: "Gulf strikes/week", nameTextStyle: {color: C.t3}, splitLine: {show: false}})],
+      series: [{name: "Hormuz ships/day", type: "line", data: hz, symbolSize: 8, lineStyle: {width: 4, color: C.amber}, itemStyle: {color: C.amber},
+        markArea: {silent: true, itemStyle: {color: "rgba(242,178,60,.08)"}, label: {color: C.amber, fontWeight: 700, position: "insideBottom"}, data: [[{name: "Warning window", xAxis: "Nov 25"}, {xAxis: "Feb 26"}]]}},
+        {name: "Gulf strikes/week", type: "bar", yAxisIndex: 1, data: gs, barWidth: 18, itemStyle: {color: C.red, borderRadius: 3}}]}); }},
+  MOPNG: {t: "How long the reserve lasts", s: "Days of SPR cover by share of lost crude replaced, for each 2027 scenario. Green line: the 90-day goal.", draw: el => {
+    const xs = [...Array(11).keys()].map(i => i * 10), col = {S1: C.green, S2: C.cyan, S3: C.red};
+    const days = (k, sub) => { const g = H.hormuz_crude_mbd * (1 - IM[k].retained_pct / 100) * (1 - sub / 100); return g > 0 ? Math.min(200, Math.round(H.spr_mb / g)) : 200; };
+    return chart(el, {grid: {left: 50, right: 70, top: 44, bottom: 30}, legend: {top: 0, left: 0, textStyle: {color: C.t2}}, xAxis: ax({type: "category", data: xs.map(x => x + "%"), name: "replaced", nameTextStyle: {color: C.t3}}),
+      yAxis: ax({type: "value", max: 200, name: "days", nameTextStyle: {color: C.t3}}),
+      series: ["S3", "S2", "S1"].map(k => ({name: k === "S1" ? "If it reopens" : k === "S2" ? "Managed passage" : "Current path", type: "line", smooth: true, symbolSize: 6,
+        data: xs.map(x => days(k, x)), lineStyle: {width: k === TRK ? 4 : 2, color: col[k]}, itemStyle: {color: col[k]},
+        markLine: k === "S3" ? {symbol: "none", silent: true, data: [{yAxis: 90, lineStyle: {color: C.green, type: "dashed", width: 2}, label: {formatter: "90-day goal", color: C.green, position: "insideStartTop"}}]} : undefined}))}); }},
+  MEA: {t: "What each outcome costs India in 2027", s: "Million barrels of crude India must source outside Hormuz, by scenario. Diplomacy moves India left.", draw: el => {
+    const ks = ["S3", "S2", "S1"], col = {S1: C.green, S2: C.cyan, S3: C.red};
+    return chart(el, {grid: {left: 150, right: 90, top: 10, bottom: 10}, tooltip: {show: false}, xAxis: ax({type: "value", show: false}),
+      yAxis: ax({type: "category", inverse: true, data: ks.map(k => k === "S1" ? "Reopens (deal)" : k === "S2" ? "Managed passage" : "Current path"), axisLine: {show: false}, axisLabel: {color: C.t2, fontSize: 14}}),
+      series: [{type: "bar", barWidth: 34, data: ks.map(k => ({value: IM[k].crude_to_replace_mn_bbl, itemStyle: {color: col[k], borderRadius: 5}})),
+        label: {show: true, position: "right", color: "#EEF3F8", fontSize: 16, fontWeight: 800, formatter: p => p.value + " mn bbl"}}]}); }},
+  DGS: {t: "How risky each leg of the voyage is", s: "Share of non-fishing ships with no AIS, along the route Indian traders sail (1–14 Mar 2026).", draw: el =>
+    zoneBars(el, ["Persian Gulf", "Strait of Hormuz", "Gulf of Oman", "Arabian Sea", "India West Coast (near-shore)", "Gulf of Aden", "Red Sea & Suez", "Bab el-Mandeb"], GULF)},
+};
 
 /* ------------------------------------------------------------ 2 2027: forecast -> impact -> actions */
 let SCN = TRK;
